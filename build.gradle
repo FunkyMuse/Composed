@@ -1,0 +1,103 @@
+buildscript {
+    ext {
+        compose_version = '1.0.0-beta01'
+        kotlin_version = '1.4.30'
+
+        //compilation
+        compileVersion = 30
+        minVersion = 21
+        verCode = 1
+        verName = "1.0.0"
+        testRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.0.0-alpha08"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+allprojects {
+    group = "io.github.funkymuse"
+}
+
+
+subprojects {
+    if (it.name != 'app') {
+        //setup gradle for libraries
+        apply plugin: 'com.android.library'
+        apply plugin: 'kotlin-android'
+    } else {
+        apply plugin: 'com.android.application'
+        apply plugin: 'kotlin-android'
+    }
+
+    dependencies {
+
+        //test
+        testImplementation 'junit:junit:4.13.2'
+        androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+        androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+        implementation "androidx.compose.ui:ui:$compose_version"
+        implementation "androidx.compose.ui:ui-tooling:$compose_version"
+    }
+
+    android {
+        compileSdkVersion compileVersion
+
+        defaultConfig {
+            minSdkVersion minVersion
+            targetSdkVersion compileVersion
+            versionCode verCode
+            versionName verName
+            testInstrumentationRunner testRunner
+        }
+
+        compileOptions {
+            sourceCompatibility = 1.8
+            targetCompatibility = 1.8
+        }
+
+        kotlinOptions {
+            jvmTarget = '1.8'
+            useIR = true
+        }
+
+        buildFeatures {
+            aidl = false
+            renderScript = false
+            resValues = false
+            shaders = false
+            buildConfig = false
+            compose = true
+        }
+
+        testOptions.unitTests {
+            includeAndroidResources = true
+        }
+
+        buildTypes {
+            debug {
+                minifyEnabled false
+                crunchPngs false
+                shrinkResources false
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            }
+
+            release {
+                minifyEnabled true
+                shrinkResources true
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            }
+        }
+    }
+}
