@@ -12,7 +12,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 fun rememberBooleanSaveableDefaultFalse() = rememberSaveable { mutableStateOf(false) }
 
 @Composable
-fun rememberBooleanSaveableDefaultTrue() = rememberSaveable { mutableStateOf(false) }
+fun rememberBooleanSaveableDefaultTrue() = rememberSaveable { mutableStateOf(true) }
 
 @Composable
 fun rememberStringSaveableDefaultEmpty() = rememberSaveable { mutableStateOf("") }
