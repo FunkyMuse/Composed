@@ -7,6 +7,21 @@ android {
     defaultConfig {
         applicationId "com.funkymuse.composedlib"
     }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            crunchPngs false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
 }
 
 dependencies {
