@@ -25,9 +25,15 @@ suspend fun BottomSheetScaffoldState.toggleSheetState() {
 }
 
 @OptIn(ExperimentalMaterialApi::class)
+suspend fun BottomSheetScaffoldState.toggleDrawerState() {
+    drawerState.toggle()
+}
+
+@OptIn(ExperimentalMaterialApi::class)
 fun BottomSheetScaffoldState.dismissSnack() {
     snackbarHostState.currentSnackbarData?.dismiss()
 }
+
 
 @OptIn(ExperimentalMaterialApi::class)
 suspend fun ModalBottomSheetState.toggle(){
