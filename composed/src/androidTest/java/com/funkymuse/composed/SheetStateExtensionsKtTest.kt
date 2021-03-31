@@ -19,7 +19,6 @@ import org.junit.runner.RunWith
 /**
  * Created by funkymuse on 3/24/21 to long live and prosper !
  */
-@RunWith(AndroidJUnit4::class)
 class SheetStateExtensionsKtTest {
 
     @get:Rule
