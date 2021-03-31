@@ -2,6 +2,7 @@ buildscript {
     ext {
         compose_version = '1.0.0-beta03'
         kotlin_version = '1.4.30'
+        lifecycle_version = '2.4.0-alpha01'
 
         //compilation
         compileVersion = 30
@@ -41,12 +42,14 @@ subprojects {
     }
 
     dependencies {
-
         //test
-        testImplementation 'junit:junit:4.13.2'
-        androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-        androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
         androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+        testImplementation "org.junit.jupiter:junit-jupiter-api:5.7.0"
+        testImplementation "org.junit.jupiter:junit-jupiter-params:5.7.0"
+        testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.7.0"
+
+        //lifecycle
+        implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
 
         implementation "androidx.compose.ui:ui:$compose_version"
         implementation "androidx.compose.ui:ui-tooling:$compose_version"
@@ -67,6 +70,13 @@ subprojects {
         compileOptions {
             sourceCompatibility = 1.8
             targetCompatibility = 1.8
+        }
+
+        testOptions.unitTests.all {
+            useJUnitPlatform()
+            testLogging {
+                events 'passed', 'failed', 'skipped', 'standardOut', 'standardError'
+            }
         }
 
         kotlinOptions {

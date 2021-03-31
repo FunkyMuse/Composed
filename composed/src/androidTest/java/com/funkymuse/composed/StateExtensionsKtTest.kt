@@ -14,7 +14,6 @@ import org.junit.runner.RunWith
 /**
  * Created by Hristijan, date 3/5/21
  */
-@RunWith(AndroidJUnit4::class)
 class StateExtensionsKtTest {
 
     @get:Rule
