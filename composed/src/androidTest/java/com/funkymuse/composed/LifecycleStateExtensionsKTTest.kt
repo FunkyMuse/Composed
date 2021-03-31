@@ -33,7 +33,7 @@ class LifecycleStateExtensionsKTTest {
             assert(lifecycleOwner().lifecycle.currentState == Lifecycle.State.STARTED)
         }
 
-        assertEquals(state, flow.value)
+        assertEquals(state, testList)
         assertTrue(state.isNotEmpty())
     }
 
@@ -49,7 +49,7 @@ class LifecycleStateExtensionsKTTest {
             assert(lifecycleOwner().lifecycle.currentState == Lifecycle.State.RESUMED)
         }
 
-        assertEquals(state, flow.value)
+        assertEquals(state, testList)
         assertTrue(state.isNotEmpty())
     }
 }
