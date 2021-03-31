@@ -3,6 +3,8 @@ buildscript {
         compose_version = '1.0.0-beta03'
         kotlin_version = '1.4.30'
         lifecycle_version = '2.4.0-alpha01'
+        coroutines_version = '1.4.3'
+        turbine_version = '0.4.1'
 
         //compilation
         compileVersion = 30
@@ -44,6 +46,11 @@ subprojects {
     dependencies {
         //test
         androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
+        androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
+        androidTestImplementation "app.cash.turbine:turbine:$turbine_version"
+
+        testImplementation "app.cash.turbine:turbine:$turbine_version"
+        testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
         testImplementation "org.junit.jupiter:junit-jupiter-api:5.7.0"
         testImplementation "org.junit.jupiter:junit-jupiter-params:5.7.0"
         testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.7.0"
@@ -54,6 +61,7 @@ subprojects {
         implementation "androidx.compose.ui:ui:$compose_version"
         implementation "androidx.compose.ui:ui-tooling:$compose_version"
         implementation "androidx.compose.material:material:$compose_version"
+        implementation 'androidx.activity:activity-compose:1.3.0-alpha05'
     }
 
     android {

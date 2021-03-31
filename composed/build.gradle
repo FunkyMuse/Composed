@@ -5,4 +5,7 @@ task testAll(dependsOn: ['test', 'connectedAndroidTest']) {
 
 dependencies {
     implementation "androidx.savedstate:savedstate-ktx:1.1.0"
+    androidTestImplementation 'androidx.test:core:1.3.0'
+    androidTestImplementation 'androidx.test:rules:1.3.0'
+
 }

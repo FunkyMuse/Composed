@@ -1,0 +1,55 @@
+package com.funkymuse.composed
+
+import androidx.activity.ComponentActivity
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.lifecycle.Lifecycle
+import com.funkymuse.composed.utils.MainCoroutineRule
+import kotlinx.coroutines.flow.MutableStateFlow
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
+import org.junit.Rule
+import org.junit.Test
+
+/**
+ * Created by Hristijan, date 3/31/21
+ */
+class LifecycleStateExtensionsKTTest {
+
+    @get:Rule
+    val composeRule = createAndroidComposeRule<ComponentActivity>()
+
+    @get:Rule
+    val mainCoroutineRule = MainCoroutineRule()
+
+    @Test
+    fun testStateWhenStarted() {
+        composeRule.activityRule.scenario.moveToState(Lifecycle.State.STARTED)
+        val flow = MutableStateFlow(emptyList<String>())
+        val testList = listOf("123", "456", "789")
+        lateinit var state: List<String>
+        composeRule.setContent {
+            flow.value = testList
+            state = stateWhenStarted(flow = flow, initial = emptyList()).value
+            assert(lifecycleOwner().lifecycle.currentState == Lifecycle.State.STARTED)
+        }
+
+        assertEquals(state, flow.value)
+        assertTrue(state.isNotEmpty())
+    }
+
+    @Test
+    fun testStateWhenResumed() {
+        composeRule.activityRule.scenario.moveToState(Lifecycle.State.RESUMED)
+        val flow = MutableStateFlow(emptyList<String>())
+        val testList = listOf("123", "456", "789")
+        lateinit var state: List<String>
+        composeRule.setContent {
+            flow.value = testList
+            state = stateWhenStarted(flow = flow, initial = emptyList()).value
+            assert(lifecycleOwner().lifecycle.currentState == Lifecycle.State.RESUMED)
+        }
+
+        assertEquals(state, flow.value)
+        assertTrue(state.isNotEmpty())
+    }
+}
