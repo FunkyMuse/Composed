@@ -24,10 +24,6 @@ buildscript {
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
-}
-
 allprojects {
     group = "io.github.funkymuse"
 }
