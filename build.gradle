@@ -5,6 +5,7 @@ buildscript {
         lifecycle_version = '2.4.0-alpha01'
         coroutines_version = '1.4.3'
         turbine_version = '0.4.1'
+        jupiter_version = '5.7.1'
 
         //compilation
         compileVersion = 30
@@ -47,9 +48,9 @@ subprojects {
 
         testImplementation "app.cash.turbine:turbine:$turbine_version"
         testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
-        testImplementation "org.junit.jupiter:junit-jupiter-api:5.7.0"
-        testImplementation "org.junit.jupiter:junit-jupiter-params:5.7.0"
-        testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.7.0"
+        testImplementation "org.junit.jupiter:junit-jupiter-api:$jupiter_version"
+        testImplementation "org.junit.jupiter:junit-jupiter-params:$jupiter_version"
+        testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$jupiter_version"
 
         //lifecycle
         implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
