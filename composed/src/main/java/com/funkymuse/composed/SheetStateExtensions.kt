@@ -11,6 +11,7 @@ suspend fun BottomSheetState.toggle() {
     if (isCollapsed) expand() else collapse()
 }
 
+@ExperimentalMaterialApi
 suspend fun BottomDrawerState.toggle() {
     if (isClosed) open() else close()
 }
