@@ -25,6 +25,12 @@ buildscript {
     }
 }
 
+ext {
+    group_id = "com.funkymuse.composed"
+    artifact_id = "composed"
+    version_code = "0.0.5"
+}
+
 allprojects {
     group = "io.github.funkymuse"
 }
@@ -35,6 +41,7 @@ subprojects {
         //setup gradle for libraries
         apply plugin: 'com.android.library'
         apply plugin: 'kotlin-android'
+        apply plugin: 'maven-publish'
     } else {
         apply plugin: 'com.android.application'
         apply plugin: 'kotlin-android'
