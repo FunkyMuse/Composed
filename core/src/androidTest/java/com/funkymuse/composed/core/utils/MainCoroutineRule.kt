@@ -1,4 +1,4 @@
-package com.funkymuse.composed.utils
+package com.funkymuse.composed.core.utils
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.test.TestCoroutineDispatcher

@@ -1,4 +1,4 @@
-package com.funkymuse.composed
+package com.funkymuse.composed.core
 
 import androidx.compose.foundation.lazy.LazyListState
 
@@ -13,3 +13,9 @@ fun LazyListState.isScrolledToTheEndAndNotScrolling() = isScrolledToTheEnd() && 
 fun LazyListState.lastVisibleIndex() = layoutInfo.visibleItemsInfo.lastOrNull()?.index
 
 fun LazyListState.visibleItemsSize() = layoutInfo.visibleItemsInfo.size
+
+fun LazyListState.totalItemsCount() = layoutInfo.totalItemsCount
+
+fun LazyListState.viewportEndOffset() = layoutInfo.viewportEndOffset
+
+fun LazyListState.viewportStartOffset() = layoutInfo.viewportStartOffset

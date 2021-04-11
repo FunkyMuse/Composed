@@ -1,5 +1,6 @@
 buildscript {
     ext {
+        //libs
         compose_version = '1.0.0-beta04'
         kotlin_version = '1.4.32'
         lifecycle_version = '2.4.0-alpha01'
@@ -7,12 +8,18 @@ buildscript {
         turbine_version = '0.4.1'
         jupiter_version = '5.7.1'
 
+    }
+    ext {
         //compilation
         compileVersion = 30
         minVersion = 21
         verCode = 1
-        verName = "1.0.0"
+        verName = "0.0.6"
         testRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+    ext {
+        //publishing
+        group_id = "com.funkymuse.composed"
     }
     repositories {
         google()
@@ -26,9 +33,7 @@ buildscript {
 }
 
 ext {
-    group_id = "com.funkymuse.composed"
-    artifact_id = "composed"
-    version_code = "0.0.5"
+
 }
 
 allprojects {
@@ -36,12 +41,39 @@ allprojects {
 }
 
 
-subprojects {
-    if (it.name != 'app') {
+subprojects { project ->
+    if (project.name != 'app') {
         //setup gradle for libraries
         apply plugin: 'com.android.library'
         apply plugin: 'kotlin-android'
         apply plugin: 'maven-publish'
+
+        afterEvaluate {
+            publishing {
+                publications {
+                    // Creates a Maven publication called "release".
+                    release(MavenPublication) {
+                        // Applies the component for the release build variant.
+                        from components.release
+
+                        // You can then customize attributes of the publication as shown below.
+                        groupId = group_id
+                        artifactId = project.name
+                        version = verName
+                    }
+                    // Creates a Maven publication called “debug”.
+                    debug(MavenPublication) {
+                        // Applies the component for the debug build variant.
+                        from components.debug
+
+                        groupId = group_id
+                        artifactId = project.name
+                        version = verName
+                    }
+                }
+            }
+        }
+
     } else {
         apply plugin: 'com.android.application'
         apply plugin: 'kotlin-android'
@@ -61,6 +93,7 @@ subprojects {
 
         //lifecycle
         implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+        implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 
         implementation "androidx.compose.ui:ui:$compose_version"
         implementation "androidx.compose.ui:ui-tooling:$compose_version"
@@ -116,3 +149,9 @@ subprojects {
 
     }
 }
+
+task testAll(dependsOn: ['test', 'connectedAndroidTest']) {
+    group = 'custom_tasks'
+    description = "Run all tests"
+}
+

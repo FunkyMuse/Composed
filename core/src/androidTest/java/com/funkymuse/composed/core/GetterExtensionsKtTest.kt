@@ -1,4 +1,4 @@
-package com.funkymuse.composed
+package com.funkymuse.composed.core
 
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
@@ -27,28 +27,28 @@ class GetterExtensionsKtTest {
     @Test
     fun contextInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(context(), LocalContext.current)
+            sameInstanceAs(context, LocalContext.current)
         }
     }
 
     @Test
     fun lifecycleOwnerInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(lifecycleOwner(), LocalLifecycleOwner.current)
+            sameInstanceAs(lifecycleOwner, LocalLifecycleOwner.current)
         }
     }
 
     @Test
     fun configurationInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(configuration(), LocalConfiguration.current)
+            sameInstanceAs(configuration, LocalConfiguration.current)
         }
     }
 
     @Test
     fun localViewInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(localView(), LocalView.current)
+            sameInstanceAs(view, LocalView.current)
         }
     }
 
@@ -57,7 +57,7 @@ class GetterExtensionsKtTest {
     @Test
     fun autoFillInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(autoFill(), LocalAutofill.current)
+            sameInstanceAs(autoFill, LocalAutofill.current)
         }
     }
 
@@ -65,147 +65,147 @@ class GetterExtensionsKtTest {
     @Test
     fun autoFillTreeInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(autoFillTree(), LocalAutofillTree.current)
+            sameInstanceAs(autoFillTree, LocalAutofillTree.current)
         }
     }
 
     @Test
     fun clipboardManagerInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(clipboardManager(), LocalClipboardManager.current)
+            sameInstanceAs(clipboardManager, LocalClipboardManager.current)
         }
     }
 
     @Test
     fun densityInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(density(), LocalDensity.current)
+            sameInstanceAs(density, LocalDensity.current)
         }
     }
 
     @Test
     fun focusManagerInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(focusManager(), LocalFocusManager.current)
+            sameInstanceAs(focusManager, LocalFocusManager.current)
         }
     }
 
     @Test
     fun fontLoaderInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(fontLoader(), LocalFontLoader.current)
+            sameInstanceAs(fontLoader, LocalFontLoader.current)
         }
     }
 
     @Test
     fun hapticFeedbackInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(hapticFeedback(), LocalHapticFeedback.current)
+            sameInstanceAs(hapticFeedback, LocalHapticFeedback.current)
         }
     }
 
     @Test
     fun inspectionModeInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(inspectionMode(), LocalInspectionMode.current)
+            sameInstanceAs(inspectionMode, LocalInspectionMode.current)
         }
     }
 
     @Test
     fun layoutDirectionInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(layoutDirection(), LocalLayoutDirection.current)
+            sameInstanceAs(layoutDirection, LocalLayoutDirection.current)
         }
     }
 
     @Test
     fun savedStateRegistryOwnerInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(savedStateRegistryOwner(), LocalSavedStateRegistryOwner.current)
+            sameInstanceAs(savedStateRegistryOwner, LocalSavedStateRegistryOwner.current)
         }
     }
 
     @Test
     fun textInputServiceInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(textInputService(), LocalTextInputService.current)
+            sameInstanceAs(textInputService, LocalTextInputService.current)
         }
     }
 
     @Test
     fun uriHandlerInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(uriHandler(), LocalUriHandler.current)
+            sameInstanceAs(uriHandler, LocalUriHandler.current)
         }
     }
 
     @Test
     fun textToolbarInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(textToolbar(), LocalTextToolbar.current)
+            sameInstanceAs(textToolbar, LocalTextToolbar.current)
         }
     }
 
     @Test
     fun viewConfigurationInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(viewConfiguration(), LocalViewConfiguration.current)
+            sameInstanceAs(viewConfiguration, LocalViewConfiguration.current)
         }
     }
 
     @Test
     fun windowInfoInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(windowInfo(), LocalWindowInfo.current)
+            sameInstanceAs(windowInfo, LocalWindowInfo.current)
         }
     }
 
     @Test
     fun absoluteElevationInstanceVerification() {
         rule.setContent {
-            assertTrue(absoluteElevation() == LocalAbsoluteElevation.current)
+            assertTrue(absoluteElevation == LocalAbsoluteElevation.current)
         }
     }
 
     @Test
     fun elevationOverlayInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(elevationOverlay(), LocalElevationOverlay.current)
+            sameInstanceAs(elevationOverlay, LocalElevationOverlay.current)
         }
     }
 
     @Test
     fun contentAlphaInstanceVerification() {
         rule.setContent {
-            assertTrue(contentAlpha() == LocalContentAlpha.current)
+            assertTrue(contentAlpha == LocalContentAlpha.current)
         }
     }
 
     @Test
     fun contentColorInstanceVerification() {
         rule.setContent {
-            assertTrue(contentColor() == LocalContentColor.current)
+            assertTrue(contentColor == LocalContentColor.current)
         }
     }
 
     @Test
     fun textStyleInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(textStyle(), LocalTextStyle.current)
+            sameInstanceAs(textStyle, LocalTextStyle.current)
         }
     }
 
     @Test
     fun textSelectionColorsInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(textSelectionColors(), LocalTextSelectionColors.current)
+            sameInstanceAs(textSelectionColors, LocalTextSelectionColors.current)
         }
     }
 
     @Test
     fun indicationInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(indication(), LocalIndication.current)
+            sameInstanceAs(indication, LocalIndication.current)
         }
     }
 
@@ -213,21 +213,21 @@ class GetterExtensionsKtTest {
     @Test
     fun inspectionTablesInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(inspectionTables(), LocalInspectionTables.current)
+            sameInstanceAs(inspectionTables, LocalInspectionTables.current)
         }
     }
 
     @Test
     fun rippleThemeInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(rippleTheme(), LocalRippleTheme.current)
+            sameInstanceAs(rippleTheme, LocalRippleTheme.current)
         }
     }
 
     @Test
     fun saveableStateRegistryInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(saveableStateRegistry(), LocalSaveableStateRegistry.current)
+            sameInstanceAs(saveableStateRegistry, LocalSaveableStateRegistry.current)
         }
     }
 

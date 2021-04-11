@@ -1,4 +1,4 @@
-package com.funkymuse.composed
+package com.funkymuse.composed.core
 
 import androidx.compose.material.*
 

@@ -1,4 +1,4 @@
-package com.funkymuse.composed
+package com.funkymuse.composed.core
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -6,15 +6,12 @@ import androidx.compose.material.*
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
-import org.junit.Assert.*
 import org.junit.Rule
 
 import org.junit.Test
-import org.junit.runner.RunWith
 
 /**
  * Created by funkymuse on 3/24/21 to long live and prosper !

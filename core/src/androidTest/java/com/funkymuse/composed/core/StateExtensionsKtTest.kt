@@ -1,15 +1,13 @@
-package com.funkymuse.composed
+package com.funkymuse.composed.core
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.test.junit4.StateRestorationTester
 import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 
 /**
  * Created by Hristijan, date 3/5/21

@@ -1,6 +1,9 @@
-package com.funkymuse.composed
+package com.funkymuse.composed.core
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
@@ -9,7 +12,7 @@ import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 
 /**
- * Created by FunkyMuse, date 3/31/21
+ * Created by funkymuse on 4/12/21 to long live and prosper !
  */
 
 @Composable
