@@ -231,6 +231,14 @@ class GetterExtensionsKtTest {
         }
     }
 
+    /*@OptIn(ExperimentalComposeUiApi::class)
+    @Test
+    fun keyboardControllerInstanceVerification() {
+        rule.setContent {
+            sameInstanceAs(keyboardController, LocalSoftwareKeyboardController.current)
+        }
+    }*/
+
     private fun <T> sameInstanceAs(typeVariable: T, variable: T) {
         assertSame(typeVariable, variable)
     }
