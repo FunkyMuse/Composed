@@ -99,3 +99,5 @@ val rippleTheme: RippleTheme @Composable get()  {return  LocalRippleTheme.curren
 
 val saveableStateRegistry: SaveableStateRegistry? @Composable get()  {return  LocalSaveableStateRegistry.current}
 
+@OptIn(ExperimentalComposeUiApi::class)
+val keyboardController: SoftwareKeyboardController? @Composable get()  {return  LocalSoftwareKeyboardController.current}
