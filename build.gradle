@@ -1,12 +1,12 @@
 buildscript {
     ext {
         //libs
-        compose_version = '1.0.0-beta08'
         kotlin_version = '1.5.10'
         lifecycle_version = '2.4.0-alpha01'
         coroutines_version = '1.5.0'
         turbine_version = '0.4.1'
         jupiter_version = '5.7.1'
+        compose_version = '1.0.0-beta08'
 
     }
     ext {
@@ -122,6 +122,10 @@ subprojects { project ->
             testLogging {
                 events 'passed', 'failed', 'skipped', 'standardOut', 'standardError'
             }
+        }
+
+        composeOptions {
+            kotlinCompilerExtensionVersion compose_version
         }
 
         kotlinOptions {
