@@ -14,7 +14,7 @@ buildscript {
         compileVersion = 30
         minVersion = 21
         verCode = 1
-        verName = "0.0.6"
+        verName = "0.0.8"
         testRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     ext {
