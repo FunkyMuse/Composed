@@ -32,7 +32,7 @@ dependencies {
     //compose
     implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.compose.material:material-icons-extended:$compose_version"
-    implementation "androidx.navigation:navigation-compose:2.4.0-alpha02"
-    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha07"
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha06'
+    implementation "androidx.navigation:navigation-compose:2.4.0-alpha03"
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha08"
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07'
 }

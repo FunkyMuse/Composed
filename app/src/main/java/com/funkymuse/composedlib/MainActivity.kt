@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
 @Composable
 fun Greeting() {
     val columnState = rememberLazyListState()
+    Log.d("COMPOSED", "YEAZZZ")
     val lastVisibleIndex = columnState.lastVisibleIndex()
 
     val list = mutableListOf<String>()
