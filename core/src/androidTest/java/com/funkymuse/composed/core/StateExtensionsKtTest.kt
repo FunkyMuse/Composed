@@ -57,15 +57,6 @@ class StateExtensionsKtTest {
     }
 
     @Test
-    fun rememberStateSaveableCheck(){
-        class TestModel
-        val model = TestModel()
-        val state = createState { rememberSaveableStateOf(value = model) }
-        assertNotNull(state)
-        assertEquals(state, model)
-    }
-
-    @Test
     fun rememberStringDefaultEmptyCheck() {
         val state = createState { rememberStringDefaultEmpty() }
         assertNotNull(state)

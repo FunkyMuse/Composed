@@ -24,9 +24,6 @@ fun rememberIntSaveableDefaultMinusOne() = rememberSaveable { mutableStateOf(-1)
 
 @Composable
 fun rememberIntSaveableDefaultZero() = rememberSaveable { mutableStateOf(0) }
-
-@Composable
-fun <T> rememberSaveableStateOf(value: T) = rememberSaveable { mutableStateOf(value)}
 //endregion
 
 
