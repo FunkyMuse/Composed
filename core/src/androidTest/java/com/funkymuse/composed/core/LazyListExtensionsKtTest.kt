@@ -10,6 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.unit.dp
+import com.funkymuse.composed.core.lazylist.*
 import com.funkymuse.composed.core.utils.generateRandomIntegerList
 import com.funkymuse.composed.core.utils.setContentWithTestViewConfiguration
 import kotlinx.coroutines.runBlocking
@@ -31,10 +32,17 @@ internal class LazyListExtensionsKtTest {
     @Test
     fun hasScrolledToTheEnd() {
         contentWithListAndState { list, state ->
-            state.firstVisibleItemIndex
             scrollToEnd(state, list)
             assert(state.lastVisibleIndex() != 0)
             assert(state.lastVisibleIndex() == list.lastIndex)
+        }
+    }
+
+    @Test
+    fun firstVisibleIndex() {
+        contentWithListAndState { _, state ->
+            assert(state.firstVisibleIndex() != null)
+            assert(state.firstVisibleIndex() == 0)
         }
     }
 
