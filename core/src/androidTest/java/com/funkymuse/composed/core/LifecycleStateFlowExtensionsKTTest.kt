@@ -45,7 +45,7 @@ class LifecycleStateFlowExtensionsKTTest {
         lateinit var state: List<String>
         composeRule.setContent {
             flow.value = testList
-            state = stateWhenStarted(flow = flow, initial = emptyList()).value
+            state = stateWhenResumed(flow = flow, initial = emptyList()).value
             assert(lifecycleOwner.lifecycle.currentState == Lifecycle.State.RESUMED)
         }
 

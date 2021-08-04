@@ -35,9 +35,14 @@ fun BottomSheetScaffoldState.dismissSnack() {
     snackbarHostState.currentSnackbarData?.dismiss()
 }
 
+@OptIn(ExperimentalMaterialApi::class)
+fun BottomSheetScaffoldState.performAction() {
+    snackbarHostState.currentSnackbarData?.performAction()
+}
+
 
 @OptIn(ExperimentalMaterialApi::class)
-suspend fun ModalBottomSheetState.toggle(){
+suspend fun ModalBottomSheetState.toggle() {
     if (isVisible) hide() else show()
 }
 

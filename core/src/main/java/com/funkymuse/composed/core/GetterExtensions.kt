@@ -30,74 +30,165 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LifecycleRegistryOwner
 import androidx.savedstate.SavedStateRegistryOwner
 
 /**
  * Created by FunkyMuse, date 3/31/21
  */
 
-val lifecycleOwner : LifecycleOwner @Composable get() { return LocalLifecycleOwner.current }
+val lifecycleOwner: LifecycleOwner
+    @Composable get() {
+        return LocalLifecycleOwner.current
+    }
 
-val context : Context @Composable get() { return LocalContext.current }
+val context: Context
+    @Composable get() {
+        return LocalContext.current
+    }
 
-val configuration : Configuration @Composable get() { return LocalConfiguration.current }
+val configuration: Configuration
+    @Composable get() {
+        return LocalConfiguration.current
+    }
 
-val view : View @Composable get() { return LocalView.current }
+val view: View
+    @Composable get() {
+        return LocalView.current
+    }
 
 @ExperimentalComposeUiApi
-val autoFill : Autofill? @Composable get() { return LocalAutofill.current }
+val autoFill: Autofill?
+    @Composable get() {
+        return LocalAutofill.current
+    }
 
 
 @ExperimentalComposeUiApi
-val autoFillTree : AutofillTree @Composable get() { return LocalAutofillTree.current }
+val autoFillTree: AutofillTree
+    @Composable get() {
+        return LocalAutofillTree.current
+    }
 
-val clipboardManager : ClipboardManager @Composable get() { return LocalClipboardManager.current }
+val clipboardManager: ClipboardManager
+    @Composable get() {
+        return LocalClipboardManager.current
+    }
 
-val density : Density @Composable get() { return LocalDensity.current }
+val density: Density
+    @Composable get() {
+        return LocalDensity.current
+    }
 
-val focusManager : FocusManager @Composable get() { return LocalFocusManager.current }
+val focusManager: FocusManager
+    @Composable get() {
+        return LocalFocusManager.current
+    }
 
 
-val fontLoader:  Font.ResourceLoader @Composable get() {return  LocalFontLoader.current}
+val fontLoader: Font.ResourceLoader
+    @Composable get() {
+        return LocalFontLoader.current
+    }
 
-val hapticFeedback: HapticFeedback @Composable get() {return  LocalHapticFeedback.current}
+val hapticFeedback: HapticFeedback
+    @Composable get() {
+        return LocalHapticFeedback.current
+    }
 
-val inspectionMode: Boolean  @Composable get() {return  LocalInspectionMode.current}
+val inspectionMode: Boolean
+    @Composable get() {
+        return LocalInspectionMode.current
+    }
 
-val layoutDirection: LayoutDirection @Composable get() {return  LocalLayoutDirection.current}
+val layoutDirection: LayoutDirection
+    @Composable get() {
+        return LocalLayoutDirection.current
+    }
 
-val savedStateRegistryOwner: SavedStateRegistryOwner @Composable get() {return  LocalSavedStateRegistryOwner.current}
+val savedStateRegistryOwner: SavedStateRegistryOwner
+    @Composable get() {
+        return LocalSavedStateRegistryOwner.current
+    }
 
-val textInputService: TextInputService? @Composable get() {return  LocalTextInputService.current}
+val textInputService: TextInputService?
+    @Composable get() {
+        return LocalTextInputService.current
+    }
 
-val uriHandler: UriHandler @Composable get() {return  LocalUriHandler.current}
+val uriHandler: UriHandler
+    @Composable get() {
+        return LocalUriHandler.current
+    }
 
-val textToolbar: TextToolbar @Composable get() {return  LocalTextToolbar.current}
+val textToolbar: TextToolbar
+    @Composable get() {
+        return LocalTextToolbar.current
+    }
 
-val viewConfiguration: ViewConfiguration @Composable get() {return  LocalViewConfiguration.current}
+val viewConfiguration: ViewConfiguration
+    @Composable get() {
+        return LocalViewConfiguration.current
+    }
 
-val windowInfo: WindowInfo @Composable get() {return  LocalWindowInfo.current}
+val windowInfo: WindowInfo
+    @Composable get() {
+        return LocalWindowInfo.current
+    }
 
-val absoluteElevation:  Dp @Composable get() {return  LocalAbsoluteElevation.current}
+val absoluteElevation: Dp
+    @Composable get() {
+        return LocalAbsoluteElevation.current
+    }
 
-val elevationOverlay: ElevationOverlay? @Composable get() {return  LocalElevationOverlay.current}
+val elevationOverlay: ElevationOverlay?
+    @Composable get() {
+        return LocalElevationOverlay.current
+    }
 
-val contentAlpha: Float @Composable get() {return  LocalContentAlpha.current}
+val contentAlpha: Float
+    @Composable get() {
+        return LocalContentAlpha.current
+    }
 
-val contentColor : Color @Composable get() {return  LocalContentColor.current}
+val contentColor: Color
+    @Composable get() {
+        return LocalContentColor.current
+    }
 
-val textStyle: TextStyle @Composable get()  {return  LocalTextStyle.current}
+val textStyle: TextStyle
+    @Composable get() {
+        return LocalTextStyle.current
+    }
 
-val textSelectionColors:TextSelectionColors @Composable get()  {return  LocalTextSelectionColors.current}
+val textSelectionColors: TextSelectionColors
+    @Composable get() {
+        return LocalTextSelectionColors.current
+    }
 
-val indication: Indication @Composable get()  {return  LocalIndication.current}
+val indication: Indication
+    @Composable get() {
+        return LocalIndication.current
+    }
 
 @InternalComposeApi
-val inspectionTables:MutableSet<CompositionData>? @Composable get()  {return  LocalInspectionTables.current}
+val inspectionTables: MutableSet<CompositionData>?
+    @Composable get() {
+        return LocalInspectionTables.current
+    }
 
-val rippleTheme: RippleTheme @Composable get()  {return  LocalRippleTheme.current}
+val rippleTheme: RippleTheme
+    @Composable get() {
+        return LocalRippleTheme.current
+    }
 
-val saveableStateRegistry: SaveableStateRegistry? @Composable get()  {return  LocalSaveableStateRegistry.current}
+val saveableStateRegistry: SaveableStateRegistry?
+    @Composable get() {
+        return LocalSaveableStateRegistry.current
+    }
 
 @OptIn(ExperimentalComposeUiApi::class)
-val keyboardController: SoftwareKeyboardController? @Composable get()  {return  LocalSoftwareKeyboardController.current}
+val keyboardController: SoftwareKeyboardController?
+    @Composable get() {
+        return LocalSoftwareKeyboardController.current
+    }

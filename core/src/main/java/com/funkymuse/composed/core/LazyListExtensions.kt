@@ -1,21 +1,25 @@
 package com.funkymuse.composed.core
 
 import androidx.compose.foundation.lazy.LazyListState
+import androidx.compose.runtime.derivedStateOf
 
 /**
  * Created by funkymuse on 4/4/21 to long live and prosper !
  */
 
-fun LazyListState.isScrolledToTheEnd() = layoutInfo.visibleItemsInfo.lastOrNull()?.index == layoutInfo.totalItemsCount - 1
+fun LazyListState.isScrolledToTheEnd() =
+    derivedStateOf { layoutInfo.visibleItemsInfo.lastOrNull()?.index == layoutInfo.totalItemsCount - 1 }.value
 
-fun LazyListState.isScrolledToTheEndAndNotScrolling() = isScrolledToTheEnd() && !isScrollInProgress
+fun LazyListState.isScrolledToTheEndAndNotScrolling() =
+    derivedStateOf { isScrolledToTheEnd() && !isScrollInProgress }.value
 
-fun LazyListState.lastVisibleIndex() = layoutInfo.visibleItemsInfo.lastOrNull()?.index
+fun LazyListState.lastVisibleIndex() =
+    derivedStateOf { layoutInfo.visibleItemsInfo.lastOrNull()?.index }.value
 
-fun LazyListState.visibleItemsSize() = layoutInfo.visibleItemsInfo.size
+fun LazyListState.visibleItemsSize() = derivedStateOf { layoutInfo.visibleItemsInfo.size }.value
 
-fun LazyListState.totalItemsCount() = layoutInfo.totalItemsCount
+fun LazyListState.totalItemsCount() = derivedStateOf { layoutInfo.totalItemsCount }.value
 
-fun LazyListState.viewportEndOffset() = layoutInfo.viewportEndOffset
+fun LazyListState.viewportEndOffset() = derivedStateOf { layoutInfo.viewportEndOffset }.value
 
-fun LazyListState.viewportStartOffset() = layoutInfo.viewportStartOffset
+fun LazyListState.viewportStartOffset() = derivedStateOf { layoutInfo.viewportStartOffset }.value

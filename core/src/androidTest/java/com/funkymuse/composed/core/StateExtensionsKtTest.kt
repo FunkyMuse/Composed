@@ -57,6 +57,15 @@ class StateExtensionsKtTest {
     }
 
     @Test
+    fun rememberStateSaveableCheck(){
+        class TestModel
+        val model = TestModel()
+        val state = createState { rememberSaveableStateOf(value = model) }
+        assertNotNull(state)
+        assertEquals(state, model)
+    }
+
+    @Test
     fun rememberStringDefaultEmptyCheck() {
         val state = createState { rememberStringDefaultEmpty() }
         assertNotNull(state)
@@ -91,6 +100,14 @@ class StateExtensionsKtTest {
         assertEquals(state, 0)
     }
 
+    @Test
+    fun rememberStateOfCheck(){
+        class TestModel
+        val model = TestModel()
+        val state = createState { rememberStateOf(value = model) }
+        assertNotNull(state)
+        assertEquals(state, model)
+    }
 
     private fun <T> createState(initializer: @Composable () -> MutableState<T>): T? {
         var state: T? = null
