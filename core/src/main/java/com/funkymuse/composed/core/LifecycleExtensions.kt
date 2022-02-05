@@ -1,6 +1,7 @@
 package com.funkymuse.composed.core
 
 import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.*
 
 /**
@@ -82,36 +83,36 @@ fun OnDestroy(action: (source: LifecycleOwner) -> Unit) {
  */
 @Composable
 fun OnLifecycle(
-    onCreate: (source: LifecycleOwner) -> Unit = {},
-    onStart: (source: LifecycleOwner) -> Unit = {},
-    onResume: (source: LifecycleOwner) -> Unit = {},
-    onPause: (source: LifecycleOwner) -> Unit = {},
-    onStop: (source: LifecycleOwner) -> Unit = {},
-    onDestroy: (source: LifecycleOwner) -> Unit = {},
+    onCreate: ((source: LifecycleOwner) -> Unit)?=null,
+    onStart: ((source: LifecycleOwner) -> Unit)?=null,
+    onResume: ((source: LifecycleOwner) -> Unit)?=null,
+    onPause: ((source: LifecycleOwner) -> Unit)?=null,
+    onStop: ((source: LifecycleOwner) -> Unit)?=null,
+    onDestroy: ((source: LifecycleOwner) -> Unit)?=null,
 ) {
     val observer = object : DefaultLifecycleObserver {
         override fun onCreate(owner: LifecycleOwner) {
-            onCreate(owner)
+            onCreate?.invoke(owner)
         }
 
         override fun onStart(owner: LifecycleOwner) {
-            onStart(owner)
+            onStart?.invoke(owner)
         }
 
         override fun onResume(owner: LifecycleOwner) {
-            onResume(owner)
+            onResume?.invoke(owner)
         }
 
         override fun onPause(owner: LifecycleOwner) {
-            onPause(owner)
+            onPause?.invoke(owner)
         }
 
         override fun onStop(owner: LifecycleOwner) {
-            onStop(owner)
+            onStop?.invoke(owner)
         }
 
         override fun onDestroy(owner: LifecycleOwner) {
-            onDestroy(owner)
+            onDestroy?.invoke(owner)
         }
     }
     AddLifecycleObserver(observer)
@@ -124,6 +125,23 @@ fun AddLifecycleObserver(observer: LifecycleObserver) {
         owner.addObserver(observer)
         onDispose {
             owner.removeObserver(observer)
+        }
+    }
+}
+
+@Composable
+fun OnLifecycleEvent(
+    lifecycleOwner: LifecycleOwner = LocalLifecycleOwner.current,
+    onEvent: (event: Lifecycle.Event) -> Unit
+) {
+    val currentOnEvent by rememberUpdatedState(onEvent)
+    DisposableEffect(lifecycleOwner) {
+        val observer = LifecycleEventObserver { _, event ->
+            currentOnEvent(event)
+        }
+        lifecycleOwner.lifecycle.addObserver(observer)
+        onDispose {
+            lifecycleOwner.lifecycle.removeObserver(observer)
         }
     }
 }

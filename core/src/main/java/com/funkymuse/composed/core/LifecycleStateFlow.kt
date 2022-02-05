@@ -8,6 +8,7 @@ import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.EmptyCoroutineContext
 
@@ -39,4 +40,21 @@ fun <T> stateWhenResumed(
         flow.flowWithLifecycle(lifecycleOwner.lifecycle, Lifecycle.State.RESUMED)
     }
     return flowLifecycleAware.collectAsState(initial, context)
+}
+
+@Composable
+fun <T> StateFlow<T>.collectAndRemember(
+    initial: T,
+    minActiveState: Lifecycle.State = Lifecycle.State.STARTED
+): State<T> =
+    rememberFlowWithLifecycle(flow = this, minActiveState = minActiveState).collectAsState(initial)
+
+
+@Composable
+fun <T> rememberFlowWithLifecycle(
+    flow: Flow<T>,
+    lifecycle: Lifecycle = LocalLifecycleOwner.current.lifecycle,
+    minActiveState: Lifecycle.State = Lifecycle.State.STARTED
+): Flow<T> = remember(flow, lifecycle) {
+    flow.flowWithLifecycle(lifecycle, minActiveState)
 }
