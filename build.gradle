@@ -3,7 +3,7 @@ buildscript {
         //libs
         kotlin_version = '1.6.10'
         lifecycle_version = '2.4.0'
-        coroutines_version = '1.5.2'
+        coroutines_version = '1.6.0'
         turbine_version = '0.7.0'
         jupiter_version = '5.8.1'
         compose_version = '1.2.0-alpha02'
