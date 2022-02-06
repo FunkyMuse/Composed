@@ -9,3 +9,4 @@ dependencyResolutionManagement {
 rootProject.name = "ComposedLib"
 include ':app'
 include ':core'
+include ':navigation'
