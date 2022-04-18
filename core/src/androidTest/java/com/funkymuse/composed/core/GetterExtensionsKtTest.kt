@@ -2,13 +2,35 @@ package com.funkymuse.composed.core
 
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
-import androidx.compose.material.*
+import androidx.compose.material.LocalAbsoluteElevation
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.LocalContentColor
+import androidx.compose.material.LocalElevationOverlay
+import androidx.compose.material.LocalTextStyle
 import androidx.compose.material.ripple.LocalRippleTheme
 import androidx.compose.runtime.InternalComposeApi
 import androidx.compose.runtime.saveable.LocalSaveableStateRegistry
 import androidx.compose.runtime.tooling.LocalInspectionTables
 import androidx.compose.ui.ExperimentalComposeUiApi
-import androidx.compose.ui.platform.*
+import androidx.compose.ui.platform.LocalAutofill
+import androidx.compose.ui.platform.LocalAutofillTree
+import androidx.compose.ui.platform.LocalClipboardManager
+import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalFontFamilyResolver
+import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.platform.LocalInspectionMode
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.platform.LocalLifecycleOwner
+import androidx.compose.ui.platform.LocalSavedStateRegistryOwner
+import androidx.compose.ui.platform.LocalTextInputService
+import androidx.compose.ui.platform.LocalTextToolbar
+import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.platform.LocalViewConfiguration
+import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.test.junit4.createComposeRule
 import org.junit.Assert.assertSame
 import org.junit.Assert.assertTrue
@@ -93,7 +115,7 @@ class GetterExtensionsKtTest {
     @Test
     fun fontLoaderInstanceVerification() {
         rule.setContent {
-            sameInstanceAs(fontLoader, LocalFontLoader.current)
+            sameInstanceAs(fontLoader, LocalFontFamilyResolver.current)
         }
     }
 

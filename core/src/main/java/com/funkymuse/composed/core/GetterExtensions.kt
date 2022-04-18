@@ -35,7 +35,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.platform.LocalFontLoader
+import androidx.compose.ui.platform.LocalFontFamilyResolver
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -54,7 +54,7 @@ import androidx.compose.ui.platform.UriHandler
 import androidx.compose.ui.platform.ViewConfiguration
 import androidx.compose.ui.platform.WindowInfo
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.TextInputService
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.Dp
@@ -115,9 +115,9 @@ val focusManager: FocusManager
     }
 
 
-val fontLoader: Font.ResourceLoader
+val fontLoader: FontFamily.Resolver
     @Composable get() {
-        return LocalFontLoader.current
+        return LocalFontFamilyResolver.current
     }
 
 val hapticFeedback: HapticFeedback
