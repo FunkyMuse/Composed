@@ -1,7 +1,12 @@
 package com.funkymuse.composed.navigation
 
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.State
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.produceState
+import androidx.compose.runtime.remember
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
@@ -48,3 +53,22 @@ fun <T> NavHostController.getResultAsLiveData(key: String): LiveData<T>? =
 @Composable
 fun <T> NavHostController.getResult(key: String, defaultValue: T): T =
     currentBackStackEntry?.savedStateHandle?.get<T>(key) ?: defaultValue
+
+fun <T> NavBackStackEntry?.setResult(key: String, value: T) =
+    this?.savedStateHandle?.set(key, value)
+
+
+@Composable
+fun <T> NavHostController.getResultState(key: String, initial: T) =
+    currentBackStackEntry?.savedStateHandle?.getLiveData<T>(key)?.observeAsState(initial)?.value
+        ?: initial
+
+@Composable
+fun <T> NavHostController.getResultAndRemember(key: String, defaultValue: T? = null) = remember {
+    currentBackStackEntry?.savedStateHandle?.get<T>(key) ?: defaultValue
+}
+
+@Composable
+fun NavHostController.rememberPreviousEntry(): NavBackStackEntry? = remember {
+    previousBackStackEntry
+}

@@ -2,3 +2,7 @@ dependencies {
     implementation "androidx.navigation:navigation-compose:$navigation"
     implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
 }
+
+android {
+    namespace 'com.funkymuse.composed.navigation'
+}
