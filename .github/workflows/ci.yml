@@ -32,13 +32,13 @@ jobs:
     strategy:
       matrix:
         api-level: [29]
-        target: [default]
+        target: [google_apis]
     steps:
       - uses: actions/setup-java@v1
         with:
           java-version: 11
       - name: Checkout Branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - uses: actions/cache@v1
         with:
           path: ~/.gradle/caches
