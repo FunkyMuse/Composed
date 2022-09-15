@@ -4,7 +4,7 @@ buildscript {
         kotlin_version = '1.7.10'
         lifecycle_version = '2.6.0-alpha02'
         coroutines_version = '1.6.4'
-        turbine_version = '0.7.0'
+        turbine_version = '0.10.0'
         jupiter_version = '5.9.0'
         compose_version = '1.3.0-beta02'
         composeCompiler = "1.3.1"
