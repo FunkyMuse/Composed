@@ -57,14 +57,14 @@ fun isNonStable(version: String): Boolean {
 
 subprojects {
     plugins.matching { anyPlugin -> supportedPlugins(anyPlugin) }.whenPluginAdded {
-        val packageName = libs.versions.app.version.appId.get()
+        val packageName = libs.versions.app.version.groupId.get()
 
         when (this) {
             is AppPlugin -> {
                 configure<com.android.build.gradle.BaseExtension> {
                     namespace = packageName
                     defaultConfig {
-                        applicationId = namespace
+                        applicationId = libs.versions.app.version.appId.get()
                     }
                 }
             }
@@ -199,11 +199,13 @@ fun supportedPlugins(anyPlugin: Plugin<*>?) =
 
 afterEvaluate {
     plugins.matching { anyPlugin -> anyPlugin is LibraryPlugin }.whenPluginAdded {
+        group = libs.versions.app.version.gihtubId.get()
+
         publishing {
             publications {
-                register("JitpackRelease", MavenPublication::class.java) {
+                register("release", MavenPublication::class) {
                     from(components.getByName("release"))
-                    groupId = libs.versions.app.version.appId.get()
+                    groupId = libs.versions.app.version.groupId.get()
                     artifactId = name
                     version = libs.versions.app.version.versionName.get()
                 }
