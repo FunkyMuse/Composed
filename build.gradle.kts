@@ -203,7 +203,7 @@ afterEvaluate {
 
         publishing {
             publications {
-                register("release", MavenPublication::class) {
+                create<MavenPublication>("release") {
                     from(components.getByName("release"))
                     groupId = libs.versions.app.version.groupId.get()
                     artifactId = name

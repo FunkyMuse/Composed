@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.library)
     alias(libs.plugins.kotlinAndroid)
+    id(libs.versions.gradlePlugins.maven.publish.get())
 }
 
 dependencies {
