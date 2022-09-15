@@ -1,12 +1,11 @@
 import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryPlugin
-import com.android.build.gradle.TestPlugin
 
 plugins {
+    id(libs.versions.gradlePlugins.maven.publish.get())
     alias(libs.plugins.android).apply(false)
     alias(libs.plugins.library).apply(false)
     alias(libs.plugins.kotlinAndroid).apply(false)
-    alias(libs.plugins.mavenPublish).apply(false)
     alias(libs.plugins.versionCatalogUpdate)
     alias(libs.plugins.versionsBenManes)
 }
@@ -72,10 +71,6 @@ subprojects {
             is LibraryPlugin -> {
                 configure<com.android.build.gradle.BaseExtension> {
                     namespace = packageName.plus(path.replace(":", "."))
-                }
-
-                afterEvaluate {
-
                 }
             }
         }
@@ -177,7 +172,7 @@ subprojects {
                 buildConfig = false
             }
 
-            tasks.register("testAll"){
+            tasks.register("testAll") {
                 dependsOn("test", "connectedAndroidTest")
                 group = "custom_tasks"
                 description = "Run all tests"
@@ -200,3 +195,19 @@ fun Project.addCompose(baseExtension: com.android.build.gradle.BaseExtension) {
 
 fun supportedPlugins(anyPlugin: Plugin<*>?) =
     anyPlugin is AppPlugin || anyPlugin is LibraryPlugin
+
+
+afterEvaluate {
+    plugins.matching { anyPlugin -> anyPlugin is LibraryPlugin }.whenPluginAdded {
+        publishing {
+            publications {
+                register("JitpackRelease", MavenPublication::class.java) {
+                    from(components.getByName("release"))
+                    groupId = libs.versions.app.version.appId.get()
+                    artifactId = name
+                    version = libs.versions.app.version.versionName.get()
+                }
+            }
+        }
+    }
+}

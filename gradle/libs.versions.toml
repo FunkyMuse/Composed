@@ -17,7 +17,7 @@ junit-ktx = "1.1.3"
 jupiter_version = "5.9.0"
 androidx-test-core = "1.4.0"
 gradlePlugins-agp = "7.2.2"
-gradlePlugins-maven = "0.21.0"
+gradlePlugins-maven-publish = "maven-publish"
 gradlePlugins-versionCatalog = "0.6.1"
 gradlePlugins-versionsBenManes = "0.42.0"
 app-build-compileSDKVersion = "33"
@@ -112,4 +112,3 @@ kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 versionCatalogUpdate = { id = "nl.littlerobots.version-catalog-update", version.ref = "gradlePlugins-versionCatalog" }
 versionsBenManes = { id = "com.github.ben-manes.versions", version.ref = "gradlePlugins-versionsBenManes" }
-mavenPublish = { id = "com.vanniktech.maven.publish", version.ref="gradlePlugins-maven" }
