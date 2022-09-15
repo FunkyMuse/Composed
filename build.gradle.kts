@@ -72,6 +72,30 @@ subprojects {
                 configure<com.android.build.gradle.BaseExtension> {
                     namespace = packageName.plus(path.replace(":", "."))
                 }
+
+                group = libs.versions.app.version.gihtubId.get()
+
+                afterEvaluate {
+                    publishing {
+                        publications {
+                            create<MavenPublication>("release") {
+                                from(components.getByName("release"))
+                                groupId = libs.versions.app.version.groupId.get()
+                                artifactId = this@subprojects.name
+                                version = libs.versions.app.version.versionName.get()
+                            }
+                        }
+
+                        publications {
+                            create<MavenPublication>("debug") {
+                                from(components.getByName("debug"))
+                                groupId = libs.versions.app.version.groupId.get()
+                                artifactId = this@subprojects.name
+                                version = libs.versions.app.version.versionName.get()
+                            }
+                        }
+                    }
+                }
             }
         }
         configure<com.android.build.gradle.BaseExtension> {
@@ -197,19 +221,6 @@ fun supportedPlugins(anyPlugin: Plugin<*>?) =
     anyPlugin is AppPlugin || anyPlugin is LibraryPlugin
 
 
-afterEvaluate {
-    plugins.matching { anyPlugin -> anyPlugin is LibraryPlugin }.whenPluginAdded {
-        group = libs.versions.app.version.gihtubId.get()
-
-        publishing {
-            publications {
-                create<MavenPublication>("release") {
-                    from(components.getByName("release"))
-                    groupId = libs.versions.app.version.groupId.get()
-                    artifactId = name
-                    version = libs.versions.app.version.versionName.get()
-                }
-            }
-        }
-    }
+allprojects {
+    group = "io.github.funkymuse"
 }
