@@ -1,9 +1,9 @@
 package com.funkymuse.composed.core
 
 import androidx.activity.ComponentActivity
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.lifecycle.Lifecycle
-import com.funkymuse.composed.core.utils.MainCoroutineRule
 import kotlinx.coroutines.flow.MutableStateFlow
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -18,8 +18,6 @@ class LifecycleStateFlowExtensionsKTTest {
     @get:Rule
     val composeRule = createAndroidComposeRule<ComponentActivity>()
 
-    @get:Rule
-    val mainCoroutineRule = MainCoroutineRule()
 
     @Test
     fun testStateWhenStarted() {
@@ -28,7 +26,9 @@ class LifecycleStateFlowExtensionsKTTest {
         val testList = listOf("123", "456", "789")
         lateinit var state: List<String>
         composeRule.setContent {
-            flow.value = testList
+            LaunchedEffect(testList) {
+                flow.value = testList
+            }
             state = stateWhenStarted(flow = flow, initial = emptyList()).value
             assert(lifecycleOwner.lifecycle.currentState == Lifecycle.State.STARTED)
         }
@@ -44,7 +44,9 @@ class LifecycleStateFlowExtensionsKTTest {
         val testList = listOf("123", "456", "789")
         lateinit var state: List<String>
         composeRule.setContent {
-            flow.value = testList
+            LaunchedEffect(testList) {
+                flow.value = testList
+            }
             state = stateWhenResumed(flow = flow, initial = emptyList()).value
             assert(lifecycleOwner.lifecycle.currentState == Lifecycle.State.RESUMED)
         }

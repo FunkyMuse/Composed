@@ -4,7 +4,7 @@ import androidx.activity.ComponentActivity
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.lifecycle.Lifecycle
-import com.funkymuse.composed.core.utils.MainCoroutineRule
+import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
@@ -18,11 +18,9 @@ internal class LifecycleExtensionsKtTest {
     @get:Rule
     val composeRule = createAndroidComposeRule<ComponentActivity>()
 
-    @get:Rule
-    val mainCoroutineRule = MainCoroutineRule()
 
     @Test
-    fun onLifecycleEventCheck() {
+    fun onLifecycleEventCheck() = runTest {
         composeRule.activityRule.scenario.moveToState(Lifecycle.State.CREATED)
 
         val list = mutableListOf<Lifecycle.Event>()

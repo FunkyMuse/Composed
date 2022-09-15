@@ -1,0 +1,115 @@
+[versions]
+kotlin = "1.7.10"
+appCompat = "1.6.0-rc01"
+coreKTX = "1.9.0-rc01"
+coroutines = "1.6.4"
+compose = "1.3.0-beta02"
+composeCompiler = "1.3.1"
+composeMaterial3 = "1.0.0-beta02"
+customView = "1.2.0-alpha01"
+customViewPooling = "1.0.0-beta02"
+lifecycle = "2.6.0-alpha02"
+material = "1.6.1"
+turbine = "0.10.0"
+navigation_compose = "2.6.0-alpha01"
+savedState = "1.2.0"
+junit-ktx = "1.1.3"
+jupiter_version = "5.9.0"
+androidx-test-core = "1.4.0"
+gradlePlugins-agp = "7.2.2"
+gradlePlugins-maven = "0.21.0"
+gradlePlugins-versionCatalog = "0.6.1"
+gradlePlugins-versionsBenManes = "0.42.0"
+app-build-compileSDKVersion = "33"
+app-build-targetSDK = "33"
+app-build-minimumSDK = "21"
+app-build-testRunner = "androidx.test.runner.AndroidJUnitRunner"
+app-build-kotlinJVMTarget = "11"
+app-version-appId = "com.funkymuse.composed"
+app-version-versionCode = "1"
+app-version-versionName = "0.0.1"
+
+[libraries]
+material = { module = "com.google.android.material:material", version.ref = "material" }
+androidx-customView = { module = "androidx.customview:customview", version.ref = "customView" }
+androidx-saved-state = { module = "androidx.savedstate:savedstate-ktx", version.ref = "savedState" }
+androidx-customViewPooling = { module = "androidx.customview:customview-poolingcontainer", version.ref = "customViewPooling" }
+androidx-appCompat = { module = "androidx.appcompat:appcompat", version.ref = "appCompat" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKTX" }
+androidx-lifecycle-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-viewModel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-viewModel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+androidx-lifecycle-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle" }
+androidx-lifecycle-service = { module = "androidx.lifecycle:lifecycle-service", version.ref = "lifecycle" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation_compose" }
+coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "composeCompiler" }
+compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
+compose-material = { module = "androidx.compose.material:material", version.ref = "composeMaterial3" }
+compose-animation = { module = "androidx.compose.animation:animation", version.ref = "compose" }
+compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "compose" }
+compose-live-data = { module = "androidx.compose.runtime:runtime-livedata", version.ref = "compose" }
+compose-uiTooling-debug = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+compose-uiTooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
+androidx-androidTestImplementation-test-core = { module = "androidx.test:core", version.ref = "androidx-test-core" }
+androidx-androidTestImplementation-test-rules = { module = "androidx.test:rules", version.ref = "androidx-test-core" }
+androidx-androidTestImplementation-test-ui-junit = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
+androidx-androidTestImplementation-test-ui-junit-ext = { module = "androidx.test.ext:junit-ktx", version.ref = "junit-ktx" }
+
+test-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "turbine" }
+test-turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
+
+testImplementation-compose-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
+testImplementation-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter_version" }
+testImplementation-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "jupiter_version" }
+testImplementation-runtime-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "jupiter_version" }
+
+[bundles]
+compose = [
+    "compose-animation",
+    "compose-compiler",
+    "compose-foundation",
+    "compose-material",
+    "compose-runtime",
+    "compose-ui",
+    "compose-uiTooling-preview",
+    "compose-live-data",
+]
+compose-preview = [
+    "androidx-customView",
+    "androidx-customViewPooling",
+    "compose-uiTooling-debug",
+]
+lifecycle = [
+    "androidx-lifecycle-compose",
+    "androidx-lifecycle-runtime",
+    "androidx-lifecycle-service",
+    "androidx-lifecycle-viewModel",
+    "androidx-lifecycle-viewModel-compose",
+]
+androidTest = [
+    "androidx-androidTestImplementation-test-core",
+    "androidx-androidTestImplementation-test-rules",
+    "androidx-androidTestImplementation-test-ui-junit",
+    "androidx-androidTestImplementation-test-ui-junit-ext",
+    "test-coroutines",
+    "test-turbine",
+]
+
+unitTest = [
+    "testImplementation-jupiter-api",
+    "testImplementation-jupiter-params",
+    "test-coroutines",
+    "test-turbine",
+]
+
+[plugins]
+android = { id = "com.android.application", version.ref = "gradlePlugins-agp" }
+library = { id = "com.android.library", version.ref = "gradlePlugins-agp" }
+kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+versionCatalogUpdate = { id = "nl.littlerobots.version-catalog-update", version.ref = "gradlePlugins-versionCatalog" }
+versionsBenManes = { id = "com.github.ben-manes.versions", version.ref = "gradlePlugins-versionsBenManes" }
+mavenPublish = { id = "com.vanniktech.maven.publish", version.ref="gradlePlugins-maven" }

@@ -1,9 +1,0 @@
-dependencies {
-    implementation 'androidx.savedstate:savedstate-ktx:1.2.0'
-    androidTestImplementation 'androidx.test:core:1.4.0'
-    androidTestImplementation 'androidx.test:rules:1.4.0'
-}
-
-android {
-    namespace 'com.funkymuse.composed.core'
-}
