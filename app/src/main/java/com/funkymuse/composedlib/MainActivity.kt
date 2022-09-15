@@ -12,11 +12,13 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.funkymuse.composed.core.OnLifecycleEvent
 import com.funkymuse.composed.core.OnResume
 import com.funkymuse.composed.core.lazylist.lastVisibleIndex
+import com.funkymuse.composed.core.lazylist.lastVisibleIndexState
 import com.funkymuse.composedlib.ui.theme.ComposedLibTheme
 import java.util.*
 
@@ -38,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 fun Greeting() {
     val columnState = rememberLazyListState()
     Log.d("COMPOSED", "YEAZZZ")
-    val lastVisibleIndex = columnState.lastVisibleIndex()
+    val lastVisibleIndex by columnState.lastVisibleIndexState()
 
     val list = mutableListOf<String>()
     repeat(100) {

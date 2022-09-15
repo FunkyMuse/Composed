@@ -11,35 +11,35 @@ import androidx.compose.runtime.remember
 
 @Composable
 fun LazyListState.isScrolledToTheEndState() =
-    remember { derivedStateOf { isScrolledToTheEnd() } }
+    remember(this) { derivedStateOf { isScrolledToTheEnd() } }
 
 @Composable
 fun LazyListState.isScrolledToTheEndAndNotScrollingState() =
-    remember { derivedStateOf { isScrolledToTheEndAndNotScrolling() } }
+    remember(this) { derivedStateOf { isScrolledToTheEndAndNotScrolling() } }
 
 @Composable
 fun LazyListState.lastVisibleIndexState() =
-    remember { derivedStateOf { lastVisibleIndex() } }
+    remember(this) { derivedStateOf { lastVisibleIndex() } }
 
 @Composable
 fun LazyListState.firstVisibleIndexState() =
-    remember { derivedStateOf { firstVisibleIndex() } }
+    remember(this) { derivedStateOf { firstVisibleIndex() } }
 
 @Composable
 fun LazyListState.visibleItemSizeState() =
-    remember { derivedStateOf { visibleItemsSize() } }
+    remember(this) { derivedStateOf { visibleItemsSize() } }
 
 @Composable
 fun LazyListState.totalItemsCountState() =
-    remember { derivedStateOf { totalItemsCount() } }
+    remember(this) { derivedStateOf { totalItemsCount() } }
 
 @Composable
 fun LazyListState.viewportEndOffsetState() =
-    remember { derivedStateOf { viewportEndOffset() } }
+    remember(this) { derivedStateOf { viewportEndOffset() } }
 
 
 @Composable
 fun LazyListState.viewportStartOffsetState() =
-    remember { derivedStateOf { viewportStartOffset() } }
+    remember(this) { derivedStateOf { viewportStartOffset() } }
 
 

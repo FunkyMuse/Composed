@@ -11,35 +11,35 @@ import androidx.compose.runtime.remember
 
 @Composable
 fun LazyGridState.isScrolledToTheEndState() =
-    remember { derivedStateOf { isScrolledToTheEnd() } }
+    remember(this) { derivedStateOf { isScrolledToTheEnd() } }
 
 @Composable
 fun LazyGridState.isScrolledToTheEndAndNotScrollingState() =
-    remember { derivedStateOf { isScrolledToTheEndAndNotScrolling() } }
+    remember(this) { derivedStateOf { isScrolledToTheEndAndNotScrolling() } }
 
 @Composable
 fun LazyGridState.lastVisibleIndexState() =
-    remember { derivedStateOf { lastVisibleIndex() } }
+    remember(this) { derivedStateOf { lastVisibleIndex() } }
 
 @Composable
 fun LazyGridState.firstVisibleIndexState() =
-    remember { derivedStateOf { firstVisibleIndex() } }
+    remember(this) { derivedStateOf { firstVisibleIndex() } }
 
 @Composable
 fun LazyGridState.visibleItemSizeState() =
-    remember { derivedStateOf { visibleItemsSize() } }
+    remember(this) { derivedStateOf { visibleItemsSize() } }
 
 @Composable
 fun LazyGridState.totalItemsCountState() =
-    remember { derivedStateOf { totalItemsCount() } }
+    remember(this) { derivedStateOf { totalItemsCount() } }
 
 @Composable
 fun LazyGridState.viewportEndOffsetState() =
-    remember { derivedStateOf { viewportEndOffset() } }
+    remember(this) { derivedStateOf { viewportEndOffset() } }
 
 
 @Composable
 fun LazyGridState.viewportStartOffsetState() =
-    remember { derivedStateOf { viewportStartOffset() } }
+    remember(this) { derivedStateOf { viewportStartOffset() } }
 
 
