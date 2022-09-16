@@ -55,6 +55,11 @@ fun isNonStable(version: String): Boolean {
     return isStable.not()
 }
 
+
+allprojects {
+    group = "io.github.funkymuse"
+}
+
 subprojects {
     plugins.matching { anyPlugin -> supportedPlugins(anyPlugin) }.whenPluginAdded {
         when (this) {
@@ -71,8 +76,6 @@ subprojects {
                 configure<com.android.build.gradle.BaseExtension> {
                     namespace = libs.versions.app.version.groupId.get().plus(path.replace(":", "."))
                 }
-
-                group = libs.versions.app.version.gihtubId.get()
 
                 afterEvaluate {
                     publishing {
@@ -209,8 +212,3 @@ fun Project.addCompose(baseExtension: com.android.build.gradle.BaseExtension) {
 
 fun supportedPlugins(anyPlugin: Plugin<*>?) =
     anyPlugin is AppPlugin || anyPlugin is LibraryPlugin
-
-
-allprojects {
-    group = "io.github.funkymuse"
-}
