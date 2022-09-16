@@ -85,15 +85,6 @@ subprojects {
                                 version = libs.versions.app.version.versionName.get()
                             }
                         }
-
-                        publications {
-                            create<MavenPublication>("debug") {
-                                from(components.getByName("debug"))
-                                groupId = libs.versions.app.version.groupId.get()
-                                artifactId = this@subprojects.name
-                                version = libs.versions.app.version.versionName.get()
-                            }
-                        }
                     }
                 }
             }
