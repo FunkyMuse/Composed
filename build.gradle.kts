@@ -70,7 +70,7 @@ subprojects {
             }
             is LibraryPlugin -> {
                 configure<com.android.build.gradle.BaseExtension> {
-                    namespace = packageName.plus(path.replace(":", "."))
+                    namespace = libs.versions.app.version.groupId.get().plus(path.replace(":", "."))
                 }
 
                 group = libs.versions.app.version.gihtubId.get()
