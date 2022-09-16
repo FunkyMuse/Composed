@@ -57,14 +57,13 @@ fun isNonStable(version: String): Boolean {
 
 subprojects {
     plugins.matching { anyPlugin -> supportedPlugins(anyPlugin) }.whenPluginAdded {
-        val packageName = libs.versions.app.version.groupId.get()
-
         when (this) {
             is AppPlugin -> {
                 configure<com.android.build.gradle.BaseExtension> {
-                    namespace = packageName
+                    val appId = libs.versions.app.version.appId.get()
+                    namespace = appId
                     defaultConfig {
-                        applicationId = libs.versions.app.version.appId.get()
+                        applicationId = appId
                     }
                 }
             }
