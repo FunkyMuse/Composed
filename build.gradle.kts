@@ -111,8 +111,7 @@ subprojects {
                     "-opt-in=androidx.compose.ui.ExperimentalComposeUiApi",
                     "-opt-in=androidx.compose.material.ExperimentalMaterialApi",
                     "-opt-in=androidx.lifecycle.compose.ExperimentalLifecycleComposeApi",
-                    "-opt-in=androidx.compose.foundation.ExperimentalFoundationApi",
-                    "-Xcontext-receivers"
+                    "-opt-in=androidx.compose.foundation.ExperimentalFoundationApi"
                 )
             }
 
