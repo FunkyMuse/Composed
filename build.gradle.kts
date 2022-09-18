@@ -178,30 +178,6 @@ subprojects {
             }
         }
     }
-
-
-    plugins.matching { anyPlugin -> anyPlugin is LibraryPlugin }.whenPluginAdded {
-        apply(plugin = libs.versions.gradlePlugins.maven.publish.get())
-        afterEvaluate {
-            publishing {
-                publications {
-                    register<MavenPublication>("release") {
-                        artifact(tasks.getByName("bundleReleaseAar"))
-                        groupId = libs.versions.app.version.groupId.get()
-                        artifactId = this@subprojects.name
-                        version = libs.versions.app.version.versionName.get()
-                    }
-
-                    register<MavenPublication>("debug") {
-                        artifact(tasks.getByName("bundleDebugAar"))
-                        groupId = libs.versions.app.version.groupId.get()
-                        artifactId = this@subprojects.name
-                        version = libs.versions.app.version.versionName.get()
-                    }
-                }
-            }
-        }
-    }
 }
 
 fun Project.addCompose(baseExtension: com.android.build.gradle.BaseExtension) {
