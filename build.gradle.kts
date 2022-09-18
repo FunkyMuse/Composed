@@ -118,19 +118,31 @@ subprojects {
 
             plugins.withType<LibraryPlugin> {
                 configure<com.android.build.gradle.LibraryExtension> {
+
+                    apply(plugin = libs.versions.gradlePlugins.maven.publish.get())
+
                     defaultConfig {
                         consumerProguardFiles("consumer-rules.pro")
                     }
+
                     buildTypes {
-                        getByName("debug") {
-                            isMinifyEnabled = false
-                        }
                         getByName("release") {
-                            isMinifyEnabled = true
-                            proguardFiles(
-                                getDefaultProguardFile("proguard-android-optimize.txt"),
-                                "proguard-rules.pro"
-                            )
+                            isMinifyEnabled = false
+                            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+                        }
+                    }
+                    afterEvaluate {
+                        publishing {
+                            publications {
+                                create<MavenPublication>("release") {
+                                    groupId = libs.versions.app.version.groupId.get()
+                                    artifactId = this@subprojects.name
+                                    version = libs.versions.app.version.versionName.get()
+                                    afterEvaluate {
+                                        from(components["release"])
+                                    }
+                                }
+                            }
                         }
                     }
                 }
