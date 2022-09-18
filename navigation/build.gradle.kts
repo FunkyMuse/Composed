@@ -4,6 +4,10 @@ plugins {
     id(libs.versions.gradlePlugins.maven.publish.get())
 }
 
+android {
+    namespace = "com.funkymuse.composed.navigation"
+}
+
 dependencies {
     //Compose
     implementation(libs.bundles.compose)

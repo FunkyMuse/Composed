@@ -4,6 +4,10 @@ plugins {
     id(libs.versions.gradlePlugins.maven.publish.get())
 }
 
+android {
+    namespace = "com.funkymuse.composed.core"
+}
+
 dependencies {
     implementation(libs.bundles.compose)
     debugImplementation(libs.bundles.compose.preview)

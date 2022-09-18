@@ -66,17 +66,12 @@ subprojects {
             is AppPlugin -> {
                 configure<com.android.build.gradle.BaseExtension> {
                     val appId = libs.versions.app.version.appId.get()
-                    namespace = appId
                     defaultConfig {
                         applicationId = appId
                     }
                 }
             }
             is LibraryPlugin -> {
-                configure<com.android.build.gradle.BaseExtension> {
-                    namespace = libs.versions.app.version.groupId.get().plus(path.replace(":", "."))
-                }
-
                 afterEvaluate {
                     publishing {
                         publications {

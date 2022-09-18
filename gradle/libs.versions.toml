@@ -29,7 +29,7 @@ app-version-groupId = "com.funkymuse.composed"
 app-version-gihtubId = "io.github.funkymuse"
 app-version-appId = "com.funkymuse.composedlib"
 app-version-versionCode = "1"
-app-version-versionName = "0.0.26"
+app-version-versionName = "0.0.30"
 
 [libraries]
 material = { module = "com.google.android.material:material", version.ref = "material" }
