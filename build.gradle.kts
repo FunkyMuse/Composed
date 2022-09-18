@@ -186,7 +186,6 @@ subprojects {
             publishing {
                 publications {
                     create<MavenPublication>("release") {
-                        from(components.getByName("release"))
                         artifact(tasks.getByName("bundleReleaseAar"))
                         groupId = libs.versions.app.version.groupId.get()
                         artifactId = this@subprojects.name
