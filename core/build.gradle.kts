@@ -13,3 +13,25 @@ dependencies {
     androidTestImplementation(libs.androidx.androidTestImplementation.test.core)
     androidTestImplementation(libs.androidx.androidTestImplementation.test.rules)
 }
+
+val sourcesJar by tasks.creating(Jar::class) {
+    archiveClassifier.set("sources")
+    from(android.sourceSets.getByName("main").java.srcDirs)
+}
+
+artifacts {
+    archives(sourcesJar)
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                groupId = libs.versions.app.version.groupId.get()
+                artifactId = this@afterEvaluate.name
+                version = libs.versions.app.version.versionName.get()
+            }
+        }
+    }
+}

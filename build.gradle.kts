@@ -134,25 +134,6 @@ subprojects {
                         }
                     }
                 }
-
-                val sourcesJar by tasks.registering(Jar::class) {
-                    archiveClassifier.set("sources")
-                    from(sourceSets.getByName("main").java.srcDirs)
-                }
-
-                afterEvaluate {
-                    publishing {
-                        publications {
-                            register<MavenPublication>("release") {
-                                groupId = libs.versions.app.version.groupId.get()
-                                artifactId = this@afterEvaluate.name
-                                version = libs.versions.app.version.versionName.get()
-                                from(components["release"])
-                                artifact(sourcesJar.get())
-                            }
-                        }
-                    }
-                }
             }
 
             tasks.withType<org.jetbrains.kotlin.gradle.internal.KaptWithoutKotlincTask>()
