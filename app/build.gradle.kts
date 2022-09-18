@@ -20,7 +20,6 @@ android {
             )
         }
     }
-    namespace = "com.funkymuse.composedlib"
 }
 
 dependencies {

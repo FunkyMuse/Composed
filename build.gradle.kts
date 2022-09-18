@@ -55,34 +55,21 @@ fun isNonStable(version: String): Boolean {
     return isStable.not()
 }
 
-
-allprojects {
-    group = "io.github.funkymuse"
-}
-
 subprojects {
     plugins.matching { anyPlugin -> supportedPlugins(anyPlugin) }.whenPluginAdded {
         when (this) {
             is AppPlugin -> {
                 configure<com.android.build.gradle.BaseExtension> {
                     val appId = libs.versions.app.version.appId.get()
+                    namespace = appId
                     defaultConfig {
                         applicationId = appId
                     }
                 }
             }
             is LibraryPlugin -> {
-                afterEvaluate {
-                    publishing {
-                        publications {
-                            create<MavenPublication>("release") {
-                                from(components.getByName("release"))
-                                groupId = libs.versions.app.version.groupId.get()
-                                artifactId = this@subprojects.name
-                                version = libs.versions.app.version.versionName.get()
-                            }
-                        }
-                    }
+                configure<com.android.build.gradle.BaseExtension> {
+                    namespace = libs.versions.app.version.groupId.get().plus(path.replace(":", "."))
                 }
             }
         }
@@ -188,6 +175,24 @@ subprojects {
                 dependsOn("test", "connectedAndroidTest")
                 group = "custom_tasks"
                 description = "Run all tests"
+            }
+        }
+    }
+
+
+    plugins.matching { anyPlugin -> anyPlugin is LibraryPlugin }.whenPluginAdded {
+        apply(plugin = libs.versions.gradlePlugins.maven.publish.get())
+        afterEvaluate {
+            publishing {
+                publications {
+                    create<MavenPublication>("release") {
+                        from(components.getByName("release"))
+                        artifact(tasks.getByName("bundleReleaseAar"))
+                        groupId = libs.versions.app.version.groupId.get()
+                        artifactId = this@subprojects.name
+                        version = libs.versions.app.version.versionName.get()
+                    }
+                }
             }
         }
     }

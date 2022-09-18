@@ -1,11 +1,6 @@
 plugins {
     alias(libs.plugins.library)
     alias(libs.plugins.kotlinAndroid)
-    id(libs.versions.gradlePlugins.maven.publish.get())
-}
-
-android {
-    namespace = "com.funkymuse.composed.core"
 }
 
 dependencies {
