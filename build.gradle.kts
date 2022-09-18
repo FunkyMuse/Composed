@@ -185,8 +185,15 @@ subprojects {
         afterEvaluate {
             publishing {
                 publications {
-                    create<MavenPublication>("release") {
+                    register<MavenPublication>("release") {
                         artifact(tasks.getByName("bundleReleaseAar"))
+                        groupId = libs.versions.app.version.groupId.get()
+                        artifactId = this@subprojects.name
+                        version = libs.versions.app.version.versionName.get()
+                    }
+
+                    register<MavenPublication>("debug") {
+                        artifact(tasks.getByName("bundleDebugAar"))
                         groupId = libs.versions.app.version.groupId.get()
                         artifactId = this@subprojects.name
                         version = libs.versions.app.version.versionName.get()
