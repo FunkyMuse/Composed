@@ -1,22 +1,22 @@
 [versions]
 kotlin = "1.7.10"
 appCompat = "1.6.0-rc01"
-coreKTX = "1.9.0-rc01"
+coreKTX = "1.9.0"
 coroutines = "1.6.4"
-compose = "1.3.0-beta02"
+compose = "1.3.0-beta03"
 composeCompiler = "1.3.1"
-composeMaterial3 = "1.0.0-beta02"
-customView = "1.2.0-alpha01"
-customViewPooling = "1.0.0-beta02"
+composeMaterial3 = "1.3.0-beta03"
+customView = "1.2.0-alpha02"
+customViewPooling = "1.0.0"
 lifecycle = "2.6.0-alpha02"
 material = "1.6.1"
-turbine = "0.10.0"
+turbine = "1.6.4"
 navigation_compose = "2.6.0-alpha01"
 savedState = "1.2.0"
 junit-ktx = "1.1.3"
-jupiter_version = "5.9.0"
+jupiter_version = "5.9.1"
 androidx-test-core = "1.4.0"
-gradlePlugins-agp = "7.2.2"
+gradlePlugins-agp = "7.3.0"
 gradlePlugins-maven-publish = "maven-publish"
 gradlePlugins-versionCatalog = "0.6.1"
 gradlePlugins-versionsBenManes = "0.42.0"
@@ -58,10 +58,8 @@ androidx-androidTestImplementation-test-core = { module = "androidx.test:core", 
 androidx-androidTestImplementation-test-rules = { module = "androidx.test:rules", version.ref = "androidx-test-core" }
 androidx-androidTestImplementation-test-ui-junit = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
 androidx-androidTestImplementation-test-ui-junit-ext = { module = "androidx.test.ext:junit-ktx", version.ref = "junit-ktx" }
-
 test-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "turbine" }
-test-turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
-
+test-turbine = "app.cash.turbine:turbine:0.11.0"
 testImplementation-compose-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
 testImplementation-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter_version" }
 testImplementation-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "jupiter_version" }
@@ -72,11 +70,11 @@ compose = [
     "compose-animation",
     "compose-compiler",
     "compose-foundation",
+    "compose-live-data",
     "compose-material",
     "compose-runtime",
     "compose-ui",
     "compose-uiTooling-preview",
-    "compose-live-data",
 ]
 compose-preview = [
     "androidx-customView",
@@ -98,12 +96,11 @@ androidTest = [
     "test-coroutines",
     "test-turbine",
 ]
-
 unitTest = [
-    "testImplementation-jupiter-api",
-    "testImplementation-jupiter-params",
     "test-coroutines",
     "test-turbine",
+    "testImplementation-jupiter-api",
+    "testImplementation-jupiter-params",
 ]
 
 [plugins]
