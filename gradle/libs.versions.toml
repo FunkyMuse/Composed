@@ -59,7 +59,7 @@ androidx-androidTestImplementation-test-rules = { module = "androidx.test:rules"
 androidx-androidTestImplementation-test-ui-junit = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
 androidx-androidTestImplementation-test-ui-junit-ext = { module = "androidx.test.ext:junit-ktx", version.ref = "junit-ktx" }
 test-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "turbine" }
-test-turbine = "app.cash.turbine:turbine:0.11.0"
+test-turbine = "app.cash.turbine:turbine:0.12.0"
 testImplementation-compose-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
 testImplementation-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter_version" }
 testImplementation-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "jupiter_version" }
