@@ -1,6 +1,9 @@
 package com.funkymuse.composed.core.lazylist
 
+import androidx.compose.foundation.gestures.animateScrollBy
 import androidx.compose.foundation.lazy.LazyListState
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 /**
  * Created by funkymuse on 4/4/21 to long live and prosper !
@@ -79,3 +82,16 @@ fun LazyListState.viewportEndOffset() = layoutInfo.viewportEndOffset
  * @return Int
  */
 fun LazyListState.viewportStartOffset() = layoutInfo.viewportStartOffset
+
+fun LazyListState.animateScrollAndCentralizeItem(index: Int, coroutineScope: CoroutineScope) {
+    val itemInfo = layoutInfo.visibleItemsInfo.firstOrNull { it.index == index }
+    coroutineScope.launch {
+        if (itemInfo != null) {
+            val center = this@animateScrollAndCentralizeItem.layoutInfo.viewportEndOffset / 2
+            val childCenter = itemInfo.offset + itemInfo.size / 2
+            this@animateScrollAndCentralizeItem.animateScrollBy((childCenter - center).toFloat())
+        } else {
+            this@animateScrollAndCentralizeItem.animateScrollToItem(index)
+        }
+    }
+}
