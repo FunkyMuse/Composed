@@ -3,8 +3,11 @@ package com.funkymuse.composed.core
 import androidx.activity.ComponentActivity
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleOwner
 import kotlinx.coroutines.test.runTest
+import org.junit.Assert
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
@@ -68,6 +71,22 @@ internal class LifecycleExtensionsKtTest {
         assert(isLifecycleCalled)
     }
 
+    @Test
+    fun testObserveLifecycle() {
+        var isStarted = false
+        val lifecycleObserver = object : DefaultLifecycleObserver {
+            override fun onStart(owner: LifecycleOwner) {
+                super.onStart(owner)
+                isStarted = true
+            }
+        }
+        composeRule.activityRule.scenario.moveToState(Lifecycle.State.STARTED)
+        composeRule.setContent {
+            lifecycleObserver.ObserveLifecycle()
+        }
+        composeRule.waitForIdle()
+        Assert.assertTrue(isStarted)
+    }
 
     @Test
     fun onLifecycleCheck() {
