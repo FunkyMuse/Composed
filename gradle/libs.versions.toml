@@ -3,15 +3,15 @@ kotlin = "1.8.20"
 appCompat = "1.7.0-alpha02"
 coreKTX = "1.9.0"
 coroutines = "1.6.4"
-compose = "1.5.0-alpha01"
+compose = "1.5.0-alpha02"
 composeCompiler = "1.4.4"
-composeMaterial3 = "1.5.0-alpha01"
+composeMaterial3 = "1.5.0-alpha02"
 customView = "1.2.0-alpha02"
 customViewPooling = "1.0.0"
 lifecycle = "2.6.1"
 material = "1.8.0"
 turbine = "1.6.4"
-navigation_compose = "2.6.0-alpha08"
+navigation_compose = "2.6.0-alpha09"
 savedState = "1.2.1"
 junit-ktx = "1.1.5"
 jupiter_version = "5.9.2"
@@ -59,7 +59,7 @@ androidx-androidTestImplementation-test-rules = { module = "androidx.test:rules"
 androidx-androidTestImplementation-test-ui-junit = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
 androidx-androidTestImplementation-test-ui-junit-ext = { module = "androidx.test.ext:junit-ktx", version.ref = "junit-ktx" }
 test-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "turbine" }
-test-turbine = "app.cash.turbine:turbine:0.12.2"
+test-turbine = "app.cash.turbine:turbine:0.12.3"
 testImplementation-compose-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
 testImplementation-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter_version" }
 testImplementation-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "jupiter_version" }
