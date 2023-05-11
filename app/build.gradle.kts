@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.kapt)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -22,19 +24,24 @@ android {
     }
 }
 
+hilt {
+    enableAggregatingTask = true
+}
+
 dependencies {
     implementation(projects.core)
     implementation(projects.navigation)
+
+    implementation(libs.bundles.hilt)
+    kapt(libs.bundles.hilt.kapt)
 
     //core
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appCompat)
 
-    //material
-    implementation(libs.material)
-
     //Compose
     implementation(libs.bundles.compose)
+    implementation(libs.bundles.accompanist)
     debugImplementation(libs.bundles.compose.preview)
 
     //lifecycle

@@ -1,11 +1,15 @@
 import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryPlugin
+import io.netty.util.concurrent.RejectedExecutionHandlers.reject
+import java.util.Locale
 
 plugins {
     id(libs.versions.gradlePlugins.maven.publish.get())
     alias(libs.plugins.android).apply(false)
     alias(libs.plugins.library).apply(false)
     alias(libs.plugins.kotlinAndroid).apply(false)
+    alias(libs.plugins.kapt).apply(false)
+    alias(libs.plugins.hilt).apply(false)
     alias(libs.plugins.versionCatalogUpdate)
     alias(libs.plugins.versionsBenManes)
 }
@@ -32,6 +36,7 @@ tasks.withType<com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
                     isNonStable(candidate.version) && !isNonStable(currentVersion) -> {
                         reject("Updating stable to non stable is not allowed")
                     }
+
                     candidate.module == "kotlin-gradle-plugin" && candidate.version != libs.versions.kotlin.get() -> {
                         reject("Keep Kotlin version on the version specified in libs.versions.toml")
                     }
@@ -39,6 +44,7 @@ tasks.withType<com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
                     candidate.group == "com.google.devtools.ksp" && !candidate.version.startsWith(libs.versions.kotlin.get()) -> {
                         reject("KSP needs to stick to Kotlin version")
                     }
+
                     candidate.group == "org.jetbrains.kotlin.kapt" && !candidate.version.startsWith(libs.versions.kotlin.get()) -> {
                         reject("KAPT needs to stick to Kotlin version")
                     }
@@ -49,7 +55,7 @@ tasks.withType<com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 }
 
 fun isNonStable(version: String): Boolean {
-    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase().contains(it) }
+    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase(Locale.getDefault()).contains(it) }
     val regex = "^[0-9,.v-]+(-r)?$".toRegex()
     val isStable = stableKeyword || regex.matches(version)
     return isStable.not()
@@ -67,6 +73,7 @@ subprojects {
                     }
                 }
             }
+
             is LibraryPlugin -> {
                 configure<com.android.build.gradle.BaseExtension> {
                     namespace = libs.versions.app.version.groupId.get().plus(path.replace(":", "."))
@@ -97,13 +104,14 @@ subprojects {
             }
 
             compileOptions {
-                sourceCompatibility = JavaVersion.VERSION_11
-                targetCompatibility = JavaVersion.VERSION_11
+                sourceCompatibility = JavaVersion.VERSION_17
+                targetCompatibility = JavaVersion.VERSION_17
             }
 
             tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
                 kotlinOptions.jvmTarget = project.libs.versions.app.build.kotlinJVMTarget.get()
                 kotlinOptions.freeCompilerArgs = listOf(
+                    "-Xcontext-receivers",
                     "-opt-in=kotlin.RequiresOptIn",
                     "-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi",
                     "-opt-in=kotlinx.coroutines.FlowPreview",
@@ -131,15 +139,13 @@ subprojects {
                         }
                     }
                     afterEvaluate {
-                        publishing {
-                            publications {
-                                create<MavenPublication>("release") {
-                                    groupId = libs.versions.app.version.groupId.get()
-                                    artifactId = this@subprojects.name
-                                    version = libs.versions.app.version.versionName.get()
-                                    afterEvaluate {
-                                        from(components["release"])
-                                    }
+                        publishing.publications {
+                            create<MavenPublication>("release") {
+                                groupId = libs.versions.app.version.groupId.get()
+                                artifactId = this@subprojects.name
+                                version = libs.versions.app.version.versionName.get()
+                                afterEvaluate {
+                                    from(components["release"])
                                 }
                             }
                         }

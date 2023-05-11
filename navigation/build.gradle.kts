@@ -8,6 +8,9 @@ dependencies {
     implementation(libs.bundles.compose)
     debugImplementation(libs.bundles.compose.preview)
 
+    //core
+    api(projects.core)
+
     //Navigation
-    implementation(libs.androidx.navigation.compose)
+    api(libs.androidx.navigation.compose)
 }

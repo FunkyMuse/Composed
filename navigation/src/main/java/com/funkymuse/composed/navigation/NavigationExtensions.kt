@@ -1,74 +1,70 @@
 package com.funkymuse.composed.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
-import androidx.lifecycle.LiveData
+import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
+import androidx.navigation.navArgument
+import com.funkymuse.composed.core.stability_wrappers.StableHolder
+import com.funkymuse.composed.navigation.destination.NavigationDestination
+import com.funkymuse.composed.navigation.model.NavigatorIntent
 
-@Composable
-fun NavHostController.rememberParentEntry(): NavBackStackEntry {
-    // First, get the parent of the current destination
-    // This always exists since every destination in your graph has a parent
-    val parentId = currentBackStackEntry?.destination?.parent!!.id
-
-    // Now get the NavBackStackEntry associated with the parent
-    // making sure to remember it
-    return remember {
-        getBackStackEntry(parentId)
-    }
-}
-
-fun <T> NavHostController.setResult(key: String, value: T) =
-    previousBackStackEntry?.savedStateHandle?.set(key, value)
-
-@Composable
-fun <T> NavHostController.getResultAsState(key: String, initial: T): State<T> =
-    getResultAsLiveData<T>(key = key)?.observeAsState(initial) ?: produceState(
-        initialValue = initial,
-        producer = {
-            value = initial
-        }
-    )
-
-@Composable
-fun <T> NavHostController.getRememberedResult(key: String, initial: T): T {
-    val result by getResultAsState(key, initial)
-    val rememberedResult by remember {
-        mutableStateOf(result)
-    }
-    return rememberedResult
-}
-
-
-@Composable
-fun <T> NavHostController.getResultAsLiveData(key: String): LiveData<T>? =
-    currentBackStackEntry?.savedStateHandle?.getLiveData(key)
-
-@Composable
-fun <T> NavHostController.getResult(key: String, defaultValue: T): T =
-    currentBackStackEntry?.savedStateHandle?.get<T>(key) ?: defaultValue
-
-fun <T> NavBackStackEntry?.setResult(key: String, value: T) =
-    this?.savedStateHandle?.set(key, value)
-
-
-@Composable
-fun <T> NavHostController.getResultState(key: String, initial: T) =
-    currentBackStackEntry?.savedStateHandle?.getLiveData<T>(key)?.observeAsState(initial)?.value
-        ?: initial
-
-@Composable
-fun <T> NavHostController.getResultAndRemember(key: String, defaultValue: T? = null) = remember {
-    currentBackStackEntry?.savedStateHandle?.get<T>(key) ?: defaultValue
-}
 
 @Composable
 fun NavHostController.rememberPreviousEntry(): NavBackStackEntry? = remember {
     previousBackStackEntry
+}
+
+val NavHostController.currentEntry
+    get() = currentBackStackEntry
+        ?: throw IllegalStateException("$currentDestination with $currentBackStackEntry is null, this is unexpected and shouldn't happen")
+
+val StableHolder<NavHostController>.currentEntry get() = item.currentEntry
+
+
+const val HIDE_BOTTOM_NAV_ARG = "hideBottomNav"
+
+/**
+ * Add this argument to the list of [NavigationDestination.arguments] to control
+ * the visibility (HIDE) of the bottom nav bar
+ */
+val hideBottomNamedArgument: NamedNavArgument
+    get() = navArgument(HIDE_BOTTOM_NAV_ARG) {
+        type = NavType.BoolType
+        defaultValue = true
+    }
+
+/**
+ * Add this argument to the list of [NavigationDestination.arguments] to control
+ * the visibility (SHOW) of the bottom nav bar
+ */
+val showBottomNamedArgument: NamedNavArgument
+    get() = navArgument(HIDE_BOTTOM_NAV_ARG) {
+        type = NavType.BoolType
+        defaultValue = false //hide = false means show
+    }
+
+/**
+ * If not presented in the [NavigationDestination.arguments], default value is true
+ */
+val NavBackStackEntry?.hideBottomNavigation
+    get() = this?.arguments?.getBoolean(
+        HIDE_BOTTOM_NAV_ARG,
+        true,
+    ) ?: true
+
+
+fun Navigator.onDestinationIntent(intent: NavigatorIntent) {
+    when (intent) {
+        is NavigatorIntent.Directions -> navigateSingleTop(intent.destination, intent.builder)
+        is NavigatorIntent.NavigateUp -> navigateUp()
+        is NavigatorIntent.PopCurrentBackStack -> popCurrentBackStack()
+        is NavigatorIntent.PopBackStack -> popBackStack(
+            intent.route,
+            intent.inclusive,
+            intent.saveState,
+        )
+    }
 }
