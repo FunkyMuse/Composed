@@ -26,6 +26,7 @@ import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import com.funkymuse.composed.core.stability_wrappers.asStable
 import com.funkymuse.composed.navigation.Navigator
+import com.funkymuse.composed.navigation.NavigatorDestinations
 import com.funkymuse.composed.navigation.graph.NavigationGraph
 import com.funkymuse.composed.navigation.graph.NavigationGraphEntry
 import com.funkymuse.composed.navigation.hideBottomNavigation
@@ -34,7 +35,6 @@ import com.funkymuse.composedlib.navigation.DynamicGraphDestinationProvider
 import com.funkymuse.composedlib.navigation.graphs.GraphFactory
 import com.funkymuse.composedlib.navigation.addGraphs
 import com.funkymuse.composedlib.navigation.bottom_navigation.BottomNavigation
-import com.funkymuse.composedlib.navigation.destinations.home.destinations.HomeScreenBottomNavDestination
 import com.funkymuse.composedlib.ui.theme.ComposedLibTheme
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
@@ -50,7 +50,7 @@ import kotlinx.coroutines.flow.collectLatest
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    @Inject lateinit var navigator: Navigator
+    @Inject lateinit var navigatorDestinations: NavigatorDestinations
     @Inject lateinit var graphFactory: GraphFactory
     @Inject lateinit var dynamicGraphDestinationProvider: DynamicGraphDestinationProvider
 
@@ -61,12 +61,12 @@ class MainActivity : AppCompatActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colorScheme.background) {
                     AppScaffold(
-                        navigator = navigator,
                         startingDestination = dynamicGraphDestinationProvider.getStartingDestination(),
                         graphs = {
                             graphFactory.graphsWithDestinations
                         },
-                        showAnimations = true
+                        showAnimations = true,
+                        navigatorDestinations = navigatorDestinations
                     )
                 }
             }
@@ -78,10 +78,10 @@ class MainActivity : AppCompatActivity() {
 @OptIn(ExperimentalMaterialNavigationApi::class)
 @Composable
 private fun AppScaffold(
-    navigator: Navigator,
     startingDestination: String,
     graphs: () -> Map<NavigationGraph, Set<NavigationGraphEntry>>,
     showAnimations: Boolean,
+    navigatorDestinations: NavigatorDestinations,
 ) {
     val bottomSheetNavigator: BottomSheetNavigator = rememberBottomSheetNavigator()
     val navController: NavHostController = rememberAnimatedNavController(bottomSheetNavigator)
@@ -133,14 +133,14 @@ private fun AppScaffold(
         }
     }
     NavHostControllerEvents(
-        navigator = navigator,
+        navigator = navigatorDestinations,
         navController = navController,
     )
 }
 
 @Composable
 private fun NavHostControllerEvents(
-    navigator: Navigator,
+    navigator: NavigatorDestinations,
     navController: NavHostController,
 ) {
     LaunchedEffect(navController) {

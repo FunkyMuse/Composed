@@ -18,6 +18,11 @@ interface Navigator {
         destination: String,
     )
 
+    fun navigate(
+        destination: String,
+        builder: NavOptionsBuilder.() -> Unit,
+    )
+
     fun popBackStack(
         destination: String,
         inclusive: Boolean,
@@ -26,5 +31,4 @@ interface Navigator {
 
     fun popCurrentBackStack()
 
-    val destinations: Flow<NavigatorIntent>
 }
