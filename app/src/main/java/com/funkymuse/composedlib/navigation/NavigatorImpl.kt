@@ -2,16 +2,16 @@ package com.funkymuse.composedlib.navigation
 
 import androidx.navigation.NavOptionsBuilder
 import com.funkymuse.composed.navigation.Navigator
-import com.funkymuse.composed.navigation.NavigatorDestinations
+import com.funkymuse.composed.navigation.NavigatorDirections
 import com.funkymuse.composed.navigation.model.NavigatorIntent
 import javax.inject.Inject
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 
-internal class NavigatorImpl @Inject constructor() : Navigator, NavigatorDestinations {
+internal class NavigatorImpl @Inject constructor() : Navigator, NavigatorDirections {
 
     private val navigationEvents = Channel<NavigatorIntent>(Channel.BUFFERED)
-    override val destinations = navigationEvents.receiveAsFlow()
+    override val directions = navigationEvents.receiveAsFlow()
 
     override fun popCurrentBackStack() {
         navigationEvents.trySend(NavigatorIntent.PopCurrentBackStack)

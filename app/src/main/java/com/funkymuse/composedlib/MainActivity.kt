@@ -25,8 +25,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import com.funkymuse.composed.core.stability_wrappers.asStable
-import com.funkymuse.composed.navigation.Navigator
-import com.funkymuse.composed.navigation.NavigatorDestinations
+import com.funkymuse.composed.navigation.NavigatorDirections
 import com.funkymuse.composed.navigation.graph.NavigationGraph
 import com.funkymuse.composed.navigation.graph.NavigationGraphEntry
 import com.funkymuse.composed.navigation.hideBottomNavigation
@@ -50,7 +49,7 @@ import kotlinx.coroutines.flow.collectLatest
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    @Inject lateinit var navigatorDestinations: NavigatorDestinations
+    @Inject lateinit var navigatorDirections: NavigatorDirections
     @Inject lateinit var graphFactory: GraphFactory
     @Inject lateinit var dynamicGraphDestinationProvider: DynamicGraphDestinationProvider
 
@@ -66,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                             graphFactory.graphsWithDestinations
                         },
                         showAnimations = true,
-                        navigatorDestinations = navigatorDestinations
+                        navigatorDirections = navigatorDirections
                     )
                 }
             }
@@ -81,7 +80,7 @@ private fun AppScaffold(
     startingDestination: String,
     graphs: () -> Map<NavigationGraph, Set<NavigationGraphEntry>>,
     showAnimations: Boolean,
-    navigatorDestinations: NavigatorDestinations,
+    navigatorDirections: NavigatorDirections,
 ) {
     val bottomSheetNavigator: BottomSheetNavigator = rememberBottomSheetNavigator()
     val navController: NavHostController = rememberAnimatedNavController(bottomSheetNavigator)
@@ -133,18 +132,18 @@ private fun AppScaffold(
         }
     }
     NavHostControllerEvents(
-        navigator = navigatorDestinations,
+        navigator = navigatorDirections,
         navController = navController,
     )
 }
 
 @Composable
 private fun NavHostControllerEvents(
-    navigator: NavigatorDestinations,
+    navigator: NavigatorDirections,
     navController: NavHostController,
 ) {
     LaunchedEffect(navController) {
-        navigator.destinations.collectLatest { navigatorEvent ->
+        navigator.directions.collectLatest { navigatorEvent ->
             when (navigatorEvent) {
                 is NavigatorIntent.NavigateUp -> navController.navigateUp()
                 is NavigatorIntent.Directions -> navController.navigate(navigatorEvent.destination, navigatorEvent.builder)

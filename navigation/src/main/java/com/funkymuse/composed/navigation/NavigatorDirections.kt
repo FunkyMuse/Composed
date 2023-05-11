@@ -5,7 +5,7 @@ import com.funkymuse.composed.navigation.model.NavigatorIntent
 import kotlinx.coroutines.flow.Flow
 
 @Immutable
-interface NavigatorDestinations {
+interface NavigatorDirections {
 
-    val destinations: Flow<NavigatorIntent>
+    val directions: Flow<NavigatorIntent>
 }
