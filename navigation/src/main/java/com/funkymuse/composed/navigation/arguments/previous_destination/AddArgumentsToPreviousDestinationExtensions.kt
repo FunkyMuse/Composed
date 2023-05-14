@@ -2,8 +2,10 @@ package com.funkymuse.composed.navigation.arguments.previous_destination
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberUpdatedState
+import com.funkymuse.composed.navigation.currentEntry
 
 @Composable
 fun <T> AddArgumentsToPreviousDestination.OnSingleCallbackArgument(
@@ -11,8 +13,8 @@ fun <T> AddArgumentsToPreviousDestination.OnSingleCallbackArgument(
     initialValue: T? = null,
     onValue: (T?) -> Unit
 ) {
-    val currentEntryHandle = navHostController.item.currentBackStackEntry?.savedStateHandle ?: return
-    val value = currentEntryHandle.get<T>(key) ?: initialValue
+    val currentEntryHandle = navHostController.currentEntry.savedStateHandle
+    val value by currentEntryHandle.getStateFlow(key, initialValue).collectAsState(initial = initialValue)
     val currentOnValue by rememberUpdatedState(newValue = onValue)
     LaunchedEffect(value) {
         currentOnValue(value)
