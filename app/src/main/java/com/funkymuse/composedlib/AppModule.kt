@@ -14,11 +14,9 @@ import javax.inject.Singleton
 internal abstract class AppModule {
 
     @Binds
-    @Singleton
     abstract fun bindNavigator(navigatorImpl: NavigatorImpl): Navigator
 
     @Binds
-    @Singleton
     abstract fun bindNavigatorDestination(navigatorImpl: NavigatorImpl): NavigatorDirections
 
 

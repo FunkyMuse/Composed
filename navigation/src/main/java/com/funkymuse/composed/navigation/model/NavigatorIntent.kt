@@ -19,6 +19,8 @@ sealed interface NavigatorIntent {
     ) : NavigatorIntent {
         override fun toString(): String = "destination=$destination"
     }
+
+    data class NavigateTopLevel(val route: String) : NavigatorIntent
 }
 
 val String.asDirectionsSingleTop: NavigatorIntent.Directions

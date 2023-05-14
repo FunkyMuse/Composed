@@ -1,5 +1,6 @@
 package com.funkymuse.composedlib.features.favorites
 
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -7,8 +8,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import com.funkymuse.composed.core.stability_wrappers.StableHolder
 import com.funkymuse.composed.navigation.destination.NavigationDestination
@@ -24,6 +28,9 @@ internal class FavoritesScreenGraphEntry @Inject constructor(
 
     @Composable
     override fun Render(controller: StableHolder<NavHostController>) {
+        val favoritesViewModel = hiltViewModel<FavoritesViewModel>()
+        val testItems by favoritesViewModel.testFlow.collectAsStateWithLifecycle()
+        Log.d("FavoritesScreen", testItems.toString())
         Column(
             modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,

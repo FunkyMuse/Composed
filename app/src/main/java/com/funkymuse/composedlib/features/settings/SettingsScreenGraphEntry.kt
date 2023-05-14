@@ -6,6 +6,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.funkymuse.composed.core.stability_wrappers.StableHolder
 import com.funkymuse.composed.navigation.destination.NavigationDestination
@@ -20,6 +21,7 @@ internal class SettingsScreenGraphEntry @Inject constructor() : NavigationGraphE
 
     @Composable
     override fun Render(controller: StableHolder<NavHostController>) {
+        val settingsViewModel = hiltViewModel<SettingsViewModel>()
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Text(text = "Settings")
         }

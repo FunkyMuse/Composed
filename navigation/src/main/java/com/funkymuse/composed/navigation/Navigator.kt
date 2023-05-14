@@ -1,11 +1,9 @@
 package com.funkymuse.composed.navigation
 
-import androidx.compose.runtime.Stable
+import androidx.compose.runtime.Immutable
 import androidx.navigation.NavOptionsBuilder
-import com.funkymuse.composed.navigation.model.NavigatorIntent
-import kotlinx.coroutines.flow.Flow
 
-@Stable
+@Immutable
 interface Navigator {
 
     fun navigateUp()
@@ -15,6 +13,10 @@ interface Navigator {
     )
 
     fun navigate(
+        destination: String,
+    )
+
+    fun navigateTopLevel(
         destination: String,
     )
 

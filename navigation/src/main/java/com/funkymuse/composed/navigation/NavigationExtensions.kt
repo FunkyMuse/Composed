@@ -66,5 +66,7 @@ fun Navigator.onDestinationIntent(intent: NavigatorIntent) {
             intent.inclusive,
             intent.saveState,
         )
+
+        is NavigatorIntent.NavigateTopLevel -> navigateTopLevel(intent.route)
     }
 }

@@ -1,16 +1,23 @@
 package com.funkymuse.composedlib.navigation
 
+import android.util.Log
 import androidx.navigation.NavOptionsBuilder
 import com.funkymuse.composed.navigation.Navigator
 import com.funkymuse.composed.navigation.NavigatorDirections
 import com.funkymuse.composed.navigation.model.NavigatorIntent
 import javax.inject.Inject
+import javax.inject.Singleton
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 
+@Singleton
 internal class NavigatorImpl @Inject constructor() : Navigator, NavigatorDirections {
 
-    private val navigationEvents = Channel<NavigatorIntent>(Channel.BUFFERED)
+    init {
+        Log.d("NavigatorImpl", "CREATED")
+    }
+
+    private val navigationEvents = Channel<NavigatorIntent>(Channel.UNLIMITED)
     override val directions = navigationEvents.receiveAsFlow()
 
     override fun popCurrentBackStack() {
@@ -23,6 +30,10 @@ internal class NavigatorImpl @Inject constructor() : Navigator, NavigatorDirecti
 
     override fun popBackStack(destination: String, inclusive: Boolean, saveState: Boolean) {
         navigationEvents.trySend(NavigatorIntent.PopBackStack(destination, inclusive, saveState))
+    }
+
+    override fun navigateTopLevel(destination: String) {
+        navigationEvents.trySend(NavigatorIntent.NavigateTopLevel(destination))
     }
 
     override fun navigate(destination: String, builder: NavOptionsBuilder.() -> Unit) {
