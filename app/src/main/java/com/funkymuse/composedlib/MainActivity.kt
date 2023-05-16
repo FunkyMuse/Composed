@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.derivedStateOf
@@ -40,7 +39,7 @@ import com.funkymuse.composedlib.navigation.addGraphs
 import com.funkymuse.composedlib.navigation.bottom_navigation.BottomNavigation
 import com.funkymuse.composedlib.navigation.bottom_navigation.BottomNavigationEntry
 import com.funkymuse.composedlib.navigation.graphs.GraphFactory
-import com.funkymuse.composedlib.ui.theme.ComposedLibTheme
+import com.funkymuse.composedlib.ui.theme.ComposedLibThemeSurface
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.google.accompanist.navigation.material.BottomSheetNavigator
@@ -62,20 +61,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            ComposedLibTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(color = MaterialTheme.colorScheme.background) {
-                    AppScaffold(
-                        startingDestination = topLevelDestinationsProvider.getStartingDestination(),
-                        graphs = {
-                            graphFactory.graphsWithDestinations
-                        },
-                        showAnimations = true,
-                        navigatorDirections = navigatorDirections,
-                        bottomNavigationEntries = topLevelDestinationsProvider.bottomNavigationEntries.asImmutable,
-                        navigator = navigator
-                    )
-                }
+            ComposedLibThemeSurface {
+                AppScaffold(
+                    startingDestination = topLevelDestinationsProvider.getStartingDestination(),
+                    graphs = {
+                        graphFactory.graphsWithDestinations
+                    },
+                    showAnimations = true,
+                    navigatorDirections = navigatorDirections,
+                    bottomNavigationEntries = topLevelDestinationsProvider.bottomNavigationEntries.asImmutable,
+                    navigator = navigator
+                )
             }
         }
     }
@@ -96,7 +92,7 @@ private fun AppScaffold(
     val navController: NavHostController = rememberAnimatedNavController(bottomSheetNavigator)
 
     val navBackStackEntry: NavBackStackEntry? by navController.currentBackStackEntryFlow.collectAsStateWithLifecycle(null)
-    val hideFab: Boolean by remember {
+    val hideBottomNav: Boolean by remember {
         derivedStateOf { navBackStackEntry.hideBottomNavigation }
     }
     val currentRoute by remember {
@@ -135,7 +131,7 @@ private fun AppScaffold(
                 BottomNavigation(
                     bottomNavigationEntries = bottomNavigationEntries,
                     modifier = Modifier.align(Alignment.BottomStart),
-                    hideBottomNav = hideFab,
+                    hideBottomNav = hideBottomNav,
                     navBackStackEntry = navBackStackEntry,
                     onTopLevelClick = navigator::navigateTopLevel
                 )
