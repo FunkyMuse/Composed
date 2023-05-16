@@ -1,10 +1,10 @@
 package com.funkymuse.composed.navigation.destination
 
-import androidx.compose.runtime.Stable
+import androidx.compose.runtime.Immutable
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.NavDeepLink
 
-@Stable
+@Immutable
 interface NavigationDestination {
 
     fun destination(): String
