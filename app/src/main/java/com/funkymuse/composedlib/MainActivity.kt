@@ -35,7 +35,7 @@ import com.funkymuse.composed.navigation.graph.NavigationGraph
 import com.funkymuse.composed.navigation.graph.NavigationGraphEntry
 import com.funkymuse.composed.navigation.hideBottomNavigation
 import com.funkymuse.composed.navigation.model.NavigatorIntent
-import com.funkymuse.composedlib.navigation.DynamicGraphDestinationProvider
+import com.funkymuse.composedlib.navigation.TopLevelDestinationsProvider
 import com.funkymuse.composedlib.navigation.addGraphs
 import com.funkymuse.composedlib.navigation.bottom_navigation.BottomNavigation
 import com.funkymuse.composedlib.navigation.bottom_navigation.BottomNavigationEntry
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
     @Inject lateinit var navigatorDirections: NavigatorDirections
     @Inject lateinit var navigator: Navigator
     @Inject lateinit var graphFactory: GraphFactory
-    @Inject lateinit var dynamicGraphDestinationProvider: DynamicGraphDestinationProvider
+    @Inject lateinit var topLevelDestinationsProvider: TopLevelDestinationsProvider
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,13 +66,13 @@ class MainActivity : AppCompatActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colorScheme.background) {
                     AppScaffold(
-                        startingDestination = dynamicGraphDestinationProvider.getStartingDestination(),
+                        startingDestination = topLevelDestinationsProvider.getStartingDestination(),
                         graphs = {
                             graphFactory.graphsWithDestinations
                         },
                         showAnimations = true,
                         navigatorDirections = navigatorDirections,
-                        bottomNavigationEntries = dynamicGraphDestinationProvider.bottomNavigationEntries.asImmutable,
+                        bottomNavigationEntries = topLevelDestinationsProvider.bottomNavigationEntries.asImmutable,
                         navigator = navigator
                     )
                 }

@@ -7,7 +7,6 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Settings
-import androidx.compose.ui.input.key.Key.Companion.Home
 import com.funkymuse.composedlib.navigation.bottom_navigation.BottomNavigationEntry
 import com.funkymuse.composedlib.navigation.destinations.favorites.destinations.FavoritesScreenBottomNavDestination
 import com.funkymuse.composedlib.navigation.destinations.favorites.graph.FavoritesGraph
@@ -20,7 +19,7 @@ import dagger.hilt.android.scopes.ActivityRetainedScoped
 import javax.inject.Inject
 
 @ActivityRetainedScoped
-class DynamicGraphDestinationProvider @Inject constructor(
+class TopLevelDestinationsProvider @Inject constructor(
     private val graphFactory: GraphFactory,
 ) {
 
