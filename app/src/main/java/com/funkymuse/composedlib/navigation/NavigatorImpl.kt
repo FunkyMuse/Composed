@@ -1,6 +1,5 @@
 package com.funkymuse.composedlib.navigation
 
-import android.util.Log
 import androidx.navigation.NavOptionsBuilder
 import com.funkymuse.composed.navigation.Navigator
 import com.funkymuse.composed.navigation.NavigatorDirections
@@ -12,10 +11,6 @@ import kotlinx.coroutines.flow.receiveAsFlow
 
 @Singleton
 internal class NavigatorImpl @Inject constructor() : Navigator, NavigatorDirections {
-
-    init {
-        Log.d("NavigatorImpl", "CREATED")
-    }
 
     private val navigationEvents = Channel<NavigatorIntent>(Channel.UNLIMITED)
     override val directions = navigationEvents.receiveAsFlow()
