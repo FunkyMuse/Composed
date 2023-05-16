@@ -10,6 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
+import com.funkymuse.composedlib.ui.theme.ComposedLibThemeSurface
 
 
 @Composable
@@ -23,6 +25,16 @@ internal fun LoginScreen(onClick: () -> Unit) {
     ) {
         Button(onClick = onClick) {
             Text(text = "Go back")
+        }
+    }
+}
+
+@Composable
+@Preview
+private fun LoginScreenPreview(){
+    ComposedLibThemeSurface {
+        LoginScreen {
+
         }
     }
 }
