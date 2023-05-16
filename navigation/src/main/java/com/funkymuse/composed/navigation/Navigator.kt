@@ -2,6 +2,7 @@ package com.funkymuse.composed.navigation
 
 import androidx.compose.runtime.Immutable
 import androidx.navigation.NavOptionsBuilder
+import com.funkymuse.composed.navigation.model.NavigatorIntent
 
 @Immutable
 interface Navigator {
@@ -33,4 +34,5 @@ interface Navigator {
 
     fun popCurrentBackStack()
 
+    fun navigate(navigatorIntent: NavigatorIntent)
 }

@@ -12,34 +12,38 @@ import kotlinx.coroutines.flow.receiveAsFlow
 @Singleton
 internal class NavigatorImpl @Inject constructor() : Navigator, NavigatorDirections {
 
-    private val navigationEvents = Channel<NavigatorIntent>(Channel.UNLIMITED)
-    override val directions = navigationEvents.receiveAsFlow()
+    private val _directions = Channel<NavigatorIntent>(Channel.BUFFERED)
+    override val directions = _directions.receiveAsFlow()
 
     override fun popCurrentBackStack() {
-        navigationEvents.trySend(NavigatorIntent.PopCurrentBackStack)
+        _directions.trySend(NavigatorIntent.PopCurrentBackStack)
+    }
+
+    override fun navigate(navigatorIntent: NavigatorIntent) {
+        _directions.trySend(navigatorIntent)
     }
 
     override fun navigateUp() {
-        navigationEvents.trySend(NavigatorIntent.NavigateUp)
+        _directions.trySend(NavigatorIntent.NavigateUp)
     }
 
     override fun popBackStack(destination: String, inclusive: Boolean, saveState: Boolean) {
-        navigationEvents.trySend(NavigatorIntent.PopBackStack(destination, inclusive, saveState))
+        _directions.trySend(NavigatorIntent.PopBackStack(destination, inclusive, saveState))
     }
 
     override fun navigateTopLevel(destination: String) {
-        navigationEvents.trySend(NavigatorIntent.NavigateTopLevel(destination))
+        _directions.trySend(NavigatorIntent.NavigateTopLevel(destination))
     }
 
     override fun navigate(destination: String, builder: NavOptionsBuilder.() -> Unit) {
-        navigationEvents.trySend(NavigatorIntent.Directions(destination, builder))
+        _directions.trySend(NavigatorIntent.Directions(destination, builder))
     }
 
     override fun navigateSingleTop(destination: String, builder: NavOptionsBuilder.() -> Unit) {
-        navigationEvents.trySend(NavigatorIntent.Directions(destination, builder))
+        _directions.trySend(NavigatorIntent.Directions(destination, builder))
     }
 
     override fun navigate(destination: String) {
-        navigationEvents.trySend(NavigatorIntent.Directions(destination))
+        _directions.trySend(NavigatorIntent.Directions(destination))
     }
 }
