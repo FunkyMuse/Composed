@@ -1,10 +1,10 @@
 package com.funkymuse.composedlib.features
 
 import com.funkymuse.composed.navigation.graph.NavigationGraphEntry
-import com.funkymuse.composedlib.features.bottom_sheets.Test2BottomSheetDialogGraphEntry
-import com.funkymuse.composedlib.features.bottom_sheets.TestBottomSheetDialogGraphEntry
-import com.funkymuse.composedlib.features.dialogs.test2.Test2DialogGraphEntry
-import com.funkymuse.composedlib.features.dialogs.TestDialogGraphEntry
+import com.funkymuse.composedlib.features.bottom_sheets.CyanBottomSheetDialogGraphEntry
+import com.funkymuse.composedlib.features.bottom_sheets.GreenBottomSheetDialogGraphEntry
+import com.funkymuse.composedlib.features.dialogs.red.RedDialogGraphEntry
+import com.funkymuse.composedlib.features.dialogs.yellow.YellowDialogGraphEntry
 import com.funkymuse.composedlib.features.favorites.FavoritesScreenGraphEntry
 import com.funkymuse.composedlib.features.home.HomeScreenGraphEntry
 import com.funkymuse.composedlib.features.login.LoginScreenGraphEntry
@@ -50,16 +50,16 @@ internal object FeaturesModule {
     @IntoMap
     @ClassKey(DialogsGraph::class)
     fun dialogEntries(
-        testDialogGraphEntry: TestDialogGraphEntry,
-        test2DialogGraphEntry: Test2DialogGraphEntry
-    ): Set<NavigationGraphEntry> = setOf(testDialogGraphEntry, test2DialogGraphEntry)
+        yellowDialogGraphEntry: YellowDialogGraphEntry,
+        redDialogGraphEntry: RedDialogGraphEntry
+    ): Set<NavigationGraphEntry> = setOf(yellowDialogGraphEntry, redDialogGraphEntry)
 
     @Provides
     @IntoMap
     @ClassKey(BottomSheetsGraph::class)
     fun bottomSheetEntries(
-        testDialogGraphEntry: TestBottomSheetDialogGraphEntry,
-        test2DialogGraphEntry: Test2BottomSheetDialogGraphEntry
+        testDialogGraphEntry: GreenBottomSheetDialogGraphEntry,
+        test2DialogGraphEntry: CyanBottomSheetDialogGraphEntry
     ): Set<NavigationGraphEntry> = setOf(testDialogGraphEntry, test2DialogGraphEntry)
 
 

@@ -1,4 +1,4 @@
-package com.funkymuse.composedlib.navigation.destinations.bottom_sheets.test2
+package com.funkymuse.composedlib.navigation.destinations.bottom_sheets.cyan
 
 import androidx.navigation.NamedNavArgument
 import androidx.navigation.navArgument
@@ -10,10 +10,10 @@ import com.funkymuse.composed.navigation.destination.type.BottomSheetDestination
 import com.funkymuse.composed.navigation.navargs.primitives.DestinationsIntNavType
 import javax.inject.Inject
 
-class Test2BottomSheetDialogDestination @Inject constructor() : BottomSheetDestination {
+class CyanBottomSheetDialogDestination @Inject constructor() : BottomSheetDestination {
 
     companion object {
-        const val ROUTE = "Test2BottomSheetDialogDestination"
+        const val ROUTE = "CyanBottomSheetDialogDestination"
         const val ID = "id"
     }
 

@@ -1,12 +1,10 @@
-package com.funkymuse.composedlib.features.dialogs
+package com.funkymuse.composedlib.features.dialogs.yellow
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,21 +23,21 @@ import androidx.navigation.NavHostController
 import com.funkymuse.composed.core.stability_wrappers.StableHolder
 import com.funkymuse.composed.navigation.arguments.previous_destination.OnSingleStringCallbackArgument
 import com.funkymuse.composed.navigation.graph.NavigationGraphEntry
-import com.funkymuse.composedlib.navigation.destinations.dialogs.test.TestDialogDestination
-import com.funkymuse.composedlib.navigation.destinations.dialogs.test.TestDialogDirections
-import com.funkymuse.composedlib.navigation.destinations.dialogs.test2.ArgumentsFromTest2Dialog
+import com.funkymuse.composedlib.navigation.destinations.dialogs.yellow.YellowDialogDestination
+import com.funkymuse.composedlib.navigation.destinations.dialogs.yellow.YellowDialogDirections
+import com.funkymuse.composedlib.navigation.destinations.dialogs.red.ArgumentsFromRedDialog
 import javax.inject.Inject
 
-internal class TestDialogGraphEntry @Inject constructor(
-    override val navigationDestination: TestDialogDestination,
-    private val testDialogDirections: TestDialogDirections
+internal class YellowDialogGraphEntry @Inject constructor(
+    override val navigationDestination: YellowDialogDestination,
+    private val yellowDialogDirections: YellowDialogDirections
 ) : NavigationGraphEntry {
     @Composable
     override fun Render(controller: StableHolder<NavHostController>) {
         var callbackString by remember { mutableStateOf<String?>(null) }
-        val argumentsFromTest2Dialog = remember { ArgumentsFromTest2Dialog(controller) }
-        argumentsFromTest2Dialog
-            .OnSingleStringCallbackArgument(key = ArgumentsFromTest2Dialog.TEXT, onValue = {
+        val argumentsFromRedDialog = remember { ArgumentsFromRedDialog(controller) }
+        argumentsFromRedDialog
+            .OnSingleStringCallbackArgument(key = ArgumentsFromRedDialog.TEXT, onValue = {
                 callbackString = it
             })
         Column(
@@ -51,7 +49,7 @@ internal class TestDialogGraphEntry @Inject constructor(
             verticalArrangement = Arrangement.Center
         ) {
             Button(onClick = {
-                testDialogDirections.openTest2Dialog(
+                yellowDialogDirections.openRedDialog(
                     arrayOf(
                         "Navigation",
                         "Compose",
