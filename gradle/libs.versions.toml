@@ -1,26 +1,26 @@
 [versions]
 kotlin = "1.8.21"
 appCompat = "1.7.0-alpha02"
-coreKTX = "1.10.1"
+coreKTX = "1.11.0-alpha04"
 coroutines = "1.7.0"
 compose = "1.5.0-alpha04"
 composeCompiler = "1.4.7"
-composeMaterial2 = "1.5.0-alpha03"
+composeMaterial2 = "1.5.0-alpha04"
 composeMaterial3 = "1.2.0-alpha01"
 customView = "1.2.0-alpha02"
 customViewPooling = "1.0.0"
 lifecycle = "2.6.1"
 material = "1.9.0"
-turbine = "1.7.0"
+turbine = "1.7.1"
 accompanist = "0.31.2-alpha"
 #Dagger/Hilt
-hilt = "2.46"
+hilt = "2.46.1"
 hilt-work = "1.0.0"
 hiltNavigationCompose = "1.1.0-alpha01"
 navigation_compose = "2.6.0-rc01"
 savedState = "1.2.1"
 junit-ktx = "1.1.5"
-jupiter_version = "5.9.2"
+jupiter_version = "5.9.3"
 androidx-test-core = "1.5.0"
 gradlePlugins-agp = "8.0.1"
 gradlePlugins-maven-publish = "maven-publish"
@@ -79,7 +79,7 @@ accompanist-permissions = { module = "com.google.accompanist:accompanist-permiss
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
 accompanist-flowlayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanist" }
 test-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "turbine" }
-test-turbine = "app.cash.turbine:turbine:0.12.3"
+test-turbine = "app.cash.turbine:turbine:0.13.0"
 testImplementation-compose-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
 testImplementation-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter_version" }
 testImplementation-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "jupiter_version" }
