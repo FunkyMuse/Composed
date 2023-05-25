@@ -1,7 +1,7 @@
 [versions]
 kotlin = "1.8.21"
 appCompat = "1.7.0-alpha02"
-coreKTX = "1.12.0-alpha04"
+coreKTX = "1.10.1"
 coroutines = "1.7.1"
 compose = "1.5.0-beta01"
 composeCompiler = "1.4.7"
@@ -11,7 +11,7 @@ customView = "1.2.0-alpha02"
 customViewPooling = "1.0.0"
 lifecycle = "2.6.1"
 material = "1.9.0"
-turbine = "1.7.1"
+turbine = "0.13.0"
 accompanist = "0.31.2-alpha"
 #Dagger/Hilt
 hilt = "2.46.1"
@@ -73,13 +73,12 @@ hilt-work-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "hi
 #Accompanist
 accompanist-placeholder = { module = "com.google.accompanist:accompanist-placeholder-material", version.ref = "accompanist" }
 accompanist-swipeToRefresh = { module = "com.google.accompanist:accompanist-swiperefresh", version.ref = "accompanist" }
-accompanist-animatedNavigation = { module = "com.google.accompanist:accompanist-navigation-animation", version.ref = "accompanist" }
 accompanist-navigationMaterial = { module = "com.google.accompanist:accompanist-navigation-material", version.ref = "accompanist" }
 accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanist" }
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
 accompanist-flowlayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanist" }
-test-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "turbine" }
-test-turbine = "app.cash.turbine:turbine:0.13.0"
+test-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+test-turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 testImplementation-compose-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
 testImplementation-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter_version" }
 testImplementation-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "jupiter_version" }
@@ -126,7 +125,6 @@ androidTest = [
     "test-turbine",
 ]
 accompanist = [
-    "accompanist-animatedNavigation",
     "accompanist-flowlayout",
     "accompanist-navigationMaterial",
     "accompanist-permissions",

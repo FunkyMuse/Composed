@@ -24,6 +24,8 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
 import com.funkymuse.composed.core.stability_wrappers.ImmutableHolder
 import com.funkymuse.composed.core.stability_wrappers.asImmutable
@@ -40,8 +42,6 @@ import com.funkymuse.composedlib.navigation.bottom_navigation.BottomNavigation
 import com.funkymuse.composedlib.navigation.bottom_navigation.BottomNavigationEntry
 import com.funkymuse.composedlib.navigation.graphs.GraphFactory
 import com.funkymuse.composedlib.ui.theme.ComposedLibThemeSurface
-import com.google.accompanist.navigation.animation.AnimatedNavHost
-import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.google.accompanist.navigation.material.BottomSheetNavigator
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.google.accompanist.navigation.material.ModalBottomSheetLayout
@@ -89,7 +89,7 @@ private fun AppScaffold(
     navigator: Navigator,
 ) {
     val bottomSheetNavigator: BottomSheetNavigator = rememberBottomSheetNavigator()
-    val navController: NavHostController = rememberAnimatedNavController(bottomSheetNavigator)
+    val navController: NavHostController = rememberNavController(bottomSheetNavigator)
 
     val navBackStackEntry: NavBackStackEntry? by navController.currentBackStackEntryFlow.collectAsStateWithLifecycle(null)
     val hideBottomNav: Boolean by remember {
@@ -119,7 +119,7 @@ private fun AppScaffold(
                     .fillMaxSize()
                     .padding(paddingValues),
             ) {
-                AnimatedNavHost(
+                NavHost(
                     navController = navController,
                     startDestination = startingDestination,
                     enterTransition = { fadeIn() },

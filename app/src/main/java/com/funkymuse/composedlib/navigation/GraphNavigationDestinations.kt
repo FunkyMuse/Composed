@@ -2,7 +2,9 @@ package com.funkymuse.composedlib.navigation
 
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.dialog
+import androidx.navigation.compose.navigation
 import com.funkymuse.composed.core.stability_wrappers.StableHolder
 import com.funkymuse.composed.navigation.destination.animation.AnimatedDestination
 import com.funkymuse.composed.navigation.destination.type.BottomSheetDestination
@@ -10,8 +12,6 @@ import com.funkymuse.composed.navigation.destination.type.DialogDestination
 import com.funkymuse.composed.navigation.destination.type.ScreenDestination
 import com.funkymuse.composed.navigation.graph.NavigationGraph
 import com.funkymuse.composed.navigation.graph.NavigationGraphEntry
-import com.google.accompanist.navigation.animation.composable
-import com.google.accompanist.navigation.animation.navigation
 import com.google.accompanist.navigation.material.ExperimentalMaterialNavigationApi
 import com.google.accompanist.navigation.material.bottomSheet
 
