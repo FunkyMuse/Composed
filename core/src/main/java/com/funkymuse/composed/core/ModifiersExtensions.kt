@@ -5,6 +5,7 @@ import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -51,7 +52,7 @@ inline fun Modifier.debounceClickable(
     role: Role? = null,
     crossinline onClick: () -> Unit,
 ): Modifier = composed {
-    var lastClickedTime by remember { mutableStateOf(0L) }
+    var lastClickedTime by remember { mutableLongStateOf(0L) }
     clickable(
         interactionSource = interactionSource,
         indication = indication,

@@ -11,26 +11,26 @@ import androidx.compose.runtime.remember
 
 @Composable
 fun LazyStaggeredGridState.isScrolledToTheEndState() =
-    remember(this) { derivedStateOf { isScrolledToTheEnd() } }
+    remember { derivedStateOf { isScrolledToTheEnd() } }
 
 @Composable
 fun LazyStaggeredGridState.isScrolledToTheEndAndNotScrollingState() =
-    remember(this) { derivedStateOf { isScrolledToTheEndAndNotScrolling() } }
+    remember { derivedStateOf { isScrolledToTheEndAndNotScrolling() } }
 
 @Composable
 fun LazyStaggeredGridState.lastVisibleIndexState() =
-    remember(this) { derivedStateOf { lastVisibleIndex() } }
+    remember { derivedStateOf { lastVisibleIndex() } }
 
 @Composable
 fun LazyStaggeredGridState.firstVisibleIndexState() =
-    remember(this) { derivedStateOf { firstVisibleIndex() } }
+    remember { derivedStateOf { firstVisibleIndex() } }
 
 @Composable
 fun LazyStaggeredGridState.visibleItemSizeState() =
-    remember(this) { derivedStateOf { visibleItemsSize() } }
+    remember { derivedStateOf { visibleItemsSize() } }
 
 @Composable
 fun LazyStaggeredGridState.totalItemsCountState() =
-    remember(this) { derivedStateOf { totalItemsCount() } }
+    remember { derivedStateOf { totalItemsCount() } }
 
 

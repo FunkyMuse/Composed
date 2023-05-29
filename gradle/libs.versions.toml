@@ -12,7 +12,7 @@ customViewPooling = "1.0.0"
 lifecycle = "2.6.1"
 material = "1.9.0"
 turbine = "0.13.0"
-accompanist = "0.31.2-alpha"
+accompanist = "0.31.3-beta"
 #Dagger/Hilt
 hilt = "2.46.1"
 hilt-work = "1.0.0"
@@ -34,7 +34,7 @@ app-build-kotlinJVMTarget = "17"
 app-version-groupId = "com.funkymuse.composed"
 app-version-appId = "com.funkymuse.composedlib"
 app-version-versionCode = "1"
-app-version-versionName = "0.1.5"
+app-version-versionName = "0.1.6"
 
 [libraries]
 androidx-customView = { module = "androidx.customview:customview", version.ref = "customView" }

@@ -1,6 +1,7 @@
 package com.funkymuse.composed.core
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -20,10 +21,10 @@ fun rememberBooleanSaveableDefaultTrue() = rememberSaveable { mutableStateOf(tru
 fun rememberStringSaveableDefaultEmpty() = rememberSaveable { mutableStateOf("") }
 
 @Composable
-fun rememberIntSaveableDefaultMinusOne() = rememberSaveable { mutableStateOf(-1) }
+fun rememberIntSaveableDefaultMinusOne() = rememberSaveable { mutableIntStateOf(-1) }
 
 @Composable
-fun rememberIntSaveableDefaultZero() = rememberSaveable { mutableStateOf(0) }
+fun rememberIntSaveableDefaultZero() = rememberSaveable { mutableIntStateOf(0) }
 //endregion
 
 
@@ -38,10 +39,10 @@ fun rememberBooleanDefaultFalse() = remember { mutableStateOf(false) }
 fun rememberBooleanDefaultTrue() = remember { mutableStateOf(true) }
 
 @Composable
-fun rememberIntDefaultMinusOne() = remember { mutableStateOf(-1) }
+fun rememberIntDefaultMinusOne() = remember { mutableIntStateOf(-1) }
 
 @Composable
-fun rememberIntDefaultZero() = remember { mutableStateOf(0) }
+fun rememberIntDefaultZero() = remember { mutableIntStateOf(0) }
 
 @Composable
 fun <T> rememberStateOf(value:T) = remember { mutableStateOf(value) }
