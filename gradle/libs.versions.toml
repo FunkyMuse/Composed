@@ -144,6 +144,6 @@ hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 android = { id = "com.android.application", version.ref = "gradlePlugins-agp" }
 library = { id = "com.android.library", version.ref = "gradlePlugins-agp" }
 kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
-kotlinAndroid = "org.jetbrains.kotlin.android:1.8.22"
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 versionCatalogUpdate = { id = "nl.littlerobots.version-catalog-update", version.ref = "gradlePlugins-versionCatalog" }
 versionsBenManes = { id = "com.github.ben-manes.versions", version.ref = "gradlePlugins-versionsBenManes" }
