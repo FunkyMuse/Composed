@@ -1,7 +1,7 @@
 [versions]
 kotlin = "1.8.21"
 appCompat = "1.7.0-alpha02"
-coreKTX = "1.10.1"
+coreKTX = "1.11.0-beta02"
 coroutines = "1.7.1"
 compose = "1.5.0-beta02"
 composeCompiler = "1.4.7"
@@ -25,7 +25,7 @@ androidx-test-core = "1.5.0"
 gradlePlugins-agp = "8.0.2"
 gradlePlugins-maven-publish = "maven-publish"
 gradlePlugins-versionCatalog = "0.8.0"
-gradlePlugins-versionsBenManes = "0.46.0"
+gradlePlugins-versionsBenManes = "0.47.0"
 app-build-compileSDKVersion = "33"
 app-build-targetSDK = "33"
 app-build-minimumSDK = "21"
@@ -144,6 +144,6 @@ hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 android = { id = "com.android.application", version.ref = "gradlePlugins-agp" }
 library = { id = "com.android.library", version.ref = "gradlePlugins-agp" }
 kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
-kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlinAndroid = "org.jetbrains.kotlin.android:1.8.22"
 versionCatalogUpdate = { id = "nl.littlerobots.version-catalog-update", version.ref = "gradlePlugins-versionCatalog" }
 versionsBenManes = { id = "com.github.ben-manes.versions", version.ref = "gradlePlugins-versionsBenManes" }
