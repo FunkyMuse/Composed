@@ -12,7 +12,7 @@ customViewPooling = "1.0.0"
 lifecycle = "2.6.1"
 material = "1.9.0"
 turbine = "1.0.0"
-accompanist = "0.31.4-beta"
+accompanist = "0.31.5-beta"
 #Dagger/Hilt
 hilt = "2.46.1"
 hilt-work = "1.0.0"
@@ -77,7 +77,7 @@ accompanist-navigationMaterial = { module = "com.google.accompanist:accompanist-
 accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanist" }
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
 accompanist-flowlayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanist" }
-test-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+test-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.2"
 test-turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 testImplementation-compose-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
 testImplementation-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter_version" }
@@ -144,6 +144,6 @@ hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 android = { id = "com.android.application", version.ref = "gradlePlugins-agp" }
 library = { id = "com.android.library", version.ref = "gradlePlugins-agp" }
 kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
-kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlinAndroid = "org.jetbrains.kotlin.android:1.9.0"
 versionCatalogUpdate = { id = "nl.littlerobots.version-catalog-update", version.ref = "gradlePlugins-versionCatalog" }
 versionsBenManes = { id = "com.github.ben-manes.versions", version.ref = "gradlePlugins-versionsBenManes" }
