@@ -1,12 +1,12 @@
 [versions]
 kotlin = "1.9.0"
-appCompat = "1.7.0-alpha02"
-coreKTX = "1.12.0-alpha05"
+appCompat = "1.7.0-alpha03"
+coreKTX = "1.12.0-beta01"
 coroutines = "1.7.2"
-compose = "1.6.0-alpha01"
-composeCompiler = "1.5.0"
-composeMaterial2 = "1.6.0-alpha01"
-composeMaterial3 = "1.2.0-alpha03"
+compose = "1.6.0-alpha02"
+composeCompiler = "1.5.1"
+composeMaterial2 = "1.6.0-alpha02"
+composeMaterial3 = "1.2.0-alpha04"
 customView = "1.2.0-alpha02"
 customViewPooling = "1.0.0"
 lifecycle = "2.6.1"
@@ -17,12 +17,12 @@ accompanist = "0.31.5-beta"
 hilt = "2.47"
 hilt-work = "1.0.0"
 hiltNavigationCompose = "1.1.0-alpha01"
-navigation_compose = "2.7.0-beta02"
+navigation_compose = "2.7.0-rc01"
 savedState = "1.2.1"
 junit-ktx = "1.1.5"
 jupiter_version = "5.9.3"
 androidx-test-core = "1.5.0"
-gradlePlugins-agp = "8.0.2"
+gradlePlugins-agp = "8.1.0"
 gradlePlugins-maven-publish = "maven-publish"
 gradlePlugins-versionCatalog = "0.8.1"
 gradlePlugins-versionsBenManes = "0.47.0"
@@ -77,7 +77,7 @@ accompanist-navigationMaterial = { module = "com.google.accompanist:accompanist-
 accompanist-permissions = { module = "com.google.accompanist:accompanist-permissions", version.ref = "accompanist" }
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanist" }
 accompanist-flowlayout = { module = "com.google.accompanist:accompanist-flowlayout", version.ref = "accompanist" }
-test-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+test-coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3"
 test-turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 testImplementation-compose-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
 testImplementation-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter_version" }
