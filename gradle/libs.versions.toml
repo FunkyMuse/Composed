@@ -12,7 +12,7 @@ customViewPooling = "1.0.0"
 lifecycle = "2.7.0-alpha01"
 material = "1.9.0"
 turbine = "1.0.0"
-accompanist = "0.31.5-beta"
+accompanist = "0.31.6-rc"
 #Dagger/Hilt
 hilt = "2.47"
 hilt-work = "1.0.0"
