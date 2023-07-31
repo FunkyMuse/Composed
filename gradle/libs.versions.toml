@@ -9,7 +9,7 @@ composeMaterial2 = "1.6.0-alpha02"
 composeMaterial3 = "1.2.0-alpha04"
 customView = "1.2.0-alpha02"
 customViewPooling = "1.0.0"
-lifecycle = "2.6.1"
+lifecycle = "2.7.0-alpha01"
 material = "1.9.0"
 turbine = "1.0.0"
 accompanist = "0.31.5-beta"
@@ -24,8 +24,6 @@ jupiter_version = "5.9.3"
 androidx-test-core = "1.5.0"
 gradlePlugins-agp = "8.1.0"
 gradlePlugins-maven-publish = "maven-publish"
-gradlePlugins-versionCatalog = "0.8.1"
-gradlePlugins-versionsBenManes = "0.47.0"
 app-build-compileSDKVersion = "34"
 app-build-targetSDK = "34"
 app-build-minimumSDK = "21"
@@ -145,5 +143,3 @@ android = { id = "com.android.application", version.ref = "gradlePlugins-agp" }
 library = { id = "com.android.library", version.ref = "gradlePlugins-agp" }
 kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-versionCatalogUpdate = { id = "nl.littlerobots.version-catalog-update", version.ref = "gradlePlugins-versionCatalog" }
-versionsBenManes = { id = "com.github.ben-manes.versions", version.ref = "gradlePlugins-versionsBenManes" }

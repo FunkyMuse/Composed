@@ -1,7 +1,5 @@
 import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryPlugin
-import io.netty.util.concurrent.RejectedExecutionHandlers.reject
-import java.util.Locale
 
 plugins {
     id(libs.versions.gradlePlugins.maven.publish.get())
@@ -10,55 +8,6 @@ plugins {
     alias(libs.plugins.kotlinAndroid).apply(false)
     alias(libs.plugins.kapt).apply(false)
     alias(libs.plugins.hilt).apply(false)
-    alias(libs.plugins.versionCatalogUpdate)
-    alias(libs.plugins.versionsBenManes)
-}
-
-versionCatalogUpdate {
-    sortByKey.set(false)
-
-    keep {
-        // keep versions without any library or plugin reference
-        keepUnusedVersions.set(true)
-        // keep all libraries that aren't used in the project
-        keepUnusedLibraries.set(true)
-        // keep all plugins that aren't used in the project
-        keepUnusedPlugins.set(true)
-    }
-}
-
-
-tasks.withType<com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask> {
-    resolutionStrategy {
-        componentSelection {
-            all {
-                when {
-                    isNonStable(candidate.version) && !isNonStable(currentVersion) -> {
-                        reject("Updating stable to non stable is not allowed")
-                    }
-
-                    candidate.module == "kotlin-gradle-plugin" && candidate.version != libs.versions.kotlin.get() -> {
-                        reject("Keep Kotlin version on the version specified in libs.versions.toml")
-                    }
-                    // KSP and KAPT versions are compound versions, starting with the kotlin version
-                    candidate.group == "com.google.devtools.ksp" && !candidate.version.startsWith(libs.versions.kotlin.get()) -> {
-                        reject("KSP needs to stick to Kotlin version")
-                    }
-
-                    candidate.group == "org.jetbrains.kotlin.kapt" && !candidate.version.startsWith(libs.versions.kotlin.get()) -> {
-                        reject("KAPT needs to stick to Kotlin version")
-                    }
-                }
-            }
-        }
-    }
-}
-
-fun isNonStable(version: String): Boolean {
-    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.uppercase(Locale.getDefault()).contains(it) }
-    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
-    val isStable = stableKeyword || regex.matches(version)
-    return isStable.not()
 }
 
 subprojects {
