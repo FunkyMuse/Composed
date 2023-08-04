@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.kotlinAndroid).apply(false)
     alias(libs.plugins.kapt).apply(false)
     alias(libs.plugins.hilt).apply(false)
+    alias(libs.plugins.dokka)
 }
 
 subprojects {
@@ -76,6 +77,7 @@ subprojects {
                 configure<com.android.build.gradle.LibraryExtension> {
 
                     apply(plugin = libs.versions.gradlePlugins.maven.publish.get())
+                    apply(plugin = libs.plugins.dokka.get().pluginId)
 
                     defaultConfig {
                         consumerProguardFiles("consumer-rules.pro")

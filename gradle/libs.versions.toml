@@ -13,7 +13,7 @@ lifecycle = "2.7.0-alpha01"
 material = "1.9.0"
 turbine = "1.0.0"
 accompanist = "0.31.6-rc"
-#Dagger/Hilt
+dokka = "1.8.20"
 hilt = "2.47"
 hilt-work = "1.0.0"
 hiltNavigationCompose = "1.1.0-alpha01"
@@ -143,3 +143,4 @@ android = { id = "com.android.application", version.ref = "gradlePlugins-agp" }
 library = { id = "com.android.library", version.ref = "gradlePlugins-agp" }
 kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
