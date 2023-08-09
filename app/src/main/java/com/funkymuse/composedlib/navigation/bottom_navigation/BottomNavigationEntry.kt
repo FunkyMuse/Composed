@@ -5,7 +5,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import com.funkymuse.composed.navigation.destination.NavigationDestination
 
 @Immutable
-class BottomNavigationEntry(
+data class BottomNavigationEntry(
     val destination: NavigationDestination,
     val text: String,
     val selectedIcon: ImageVector,

@@ -5,8 +5,8 @@ import androidx.navigation.NavOptionsBuilder
 
 @Stable
 sealed interface NavigatorIntent {
-    object NavigateUp : NavigatorIntent
-    object PopCurrentBackStack : NavigatorIntent
+    data object NavigateUp : NavigatorIntent
+    data object PopCurrentBackStack : NavigatorIntent
     data class PopBackStack(
         val route: String,
         val inclusive: Boolean,
