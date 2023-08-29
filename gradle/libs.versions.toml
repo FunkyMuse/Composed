@@ -31,7 +31,7 @@ app-build-kotlinJVMTarget = "17"
 app-version-groupId = "com.funkymuse.composed"
 app-version-appId = "com.funkymuse.composedlib"
 app-version-versionCode = "1"
-app-version-versionName = "0.1.7"
+app-version-versionName = "0.2.0"
 
 [libraries]
 androidx-customView = { module = "androidx.customview:customview", version.ref = "customView" }
