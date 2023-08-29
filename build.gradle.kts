@@ -26,7 +26,8 @@ subprojects {
 
             is LibraryPlugin -> {
                 configure<com.android.build.gradle.BaseExtension> {
-                    namespace = libs.versions.app.version.groupId.get().plus(path.replace(":", "."))
+                    namespace = libs.versions.app.version.groupId.get()
+                        .plus(path.replace(":", ".").replace("-", "."))
                 }
             }
         }
@@ -86,7 +87,10 @@ subprojects {
                     buildTypes {
                         getByName("release") {
                             isMinifyEnabled = false
-                            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+                            proguardFiles(
+                                getDefaultProguardFile("proguard-android-optimize.txt"),
+                                "proguard-rules.pro"
+                            )
                         }
                     }
                     afterEvaluate {
