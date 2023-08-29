@@ -7,14 +7,6 @@ import androidx.compose.foundation.Indication
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
 import androidx.compose.foundation.text.selection.TextSelectionColors
-import androidx.compose.material.ElevationOverlay
-import androidx.compose.material.LocalAbsoluteElevation
-import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.LocalContentColor
-import androidx.compose.material.LocalElevationOverlay
-import androidx.compose.material.LocalTextStyle
-import androidx.compose.material.ripple.LocalRippleTheme
-import androidx.compose.material.ripple.RippleTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.InternalComposeApi
 import androidx.compose.runtime.saveable.LocalSaveableStateRegistry
@@ -25,7 +17,6 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.autofill.Autofill
 import androidx.compose.ui.autofill.AutofillTree
 import androidx.compose.ui.focus.FocusManager
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.hapticfeedback.HapticFeedback
 import androidx.compose.ui.platform.ClipboardManager
 import androidx.compose.ui.platform.LocalAutofill
@@ -53,11 +44,9 @@ import androidx.compose.ui.platform.TextToolbar
 import androidx.compose.ui.platform.UriHandler
 import androidx.compose.ui.platform.ViewConfiguration
 import androidx.compose.ui.platform.WindowInfo
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.TextInputService
 import androidx.compose.ui.unit.Density
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.lifecycle.LifecycleOwner
 import androidx.savedstate.SavedStateRegistryOwner
@@ -165,30 +154,6 @@ val windowInfo: WindowInfo
         return LocalWindowInfo.current
     }
 
-val absoluteElevation: Dp
-    @Composable get() {
-        return LocalAbsoluteElevation.current
-    }
-
-val elevationOverlay: ElevationOverlay?
-    @Composable get() {
-        return LocalElevationOverlay.current
-    }
-
-val contentAlpha: Float
-    @Composable get() {
-        return LocalContentAlpha.current
-    }
-
-val contentColor: Color
-    @Composable get() {
-        return LocalContentColor.current
-    }
-
-val textStyle: TextStyle
-    @Composable get() {
-        return LocalTextStyle.current
-    }
 
 val textSelectionColors: TextSelectionColors
     @Composable get() {
@@ -206,18 +171,13 @@ val inspectionTables: MutableSet<CompositionData>?
         return LocalInspectionTables.current
     }
 
-val rippleTheme: RippleTheme
-    @Composable get() {
-        return LocalRippleTheme.current
-    }
-
 val saveableStateRegistry: SaveableStateRegistry?
     @Composable get() {
         return LocalSaveableStateRegistry.current
     }
 
-@OptIn(ExperimentalComposeUiApi::class)
 val keyboardController: SoftwareKeyboardController?
     @Composable get() {
         return LocalSoftwareKeyboardController.current
     }
+

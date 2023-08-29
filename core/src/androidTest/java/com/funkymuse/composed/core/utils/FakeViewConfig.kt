@@ -15,14 +15,14 @@ internal fun ComposeContentTestRule.setContentWithTestViewConfiguration(
     composable: @Composable () -> Unit
 ) {
     this.setContent {
-        CompositionLocalProvider(LocalViewConfiguration provides FakeViewConfiguration) {
+        CompositionLocalProvider(LocalViewConfiguration provides fakeViewConfiguration) {
             composable()
         }
     }
 }
 
 
-private val FakeViewConfiguration = object : ViewConfiguration {
+private val fakeViewConfiguration = object : ViewConfiguration {
     override val longPressTimeoutMillis: Long
         get() = 500L
     override val doubleTapTimeoutMillis: Long

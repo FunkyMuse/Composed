@@ -2,12 +2,6 @@ package com.funkymuse.composed.core
 
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.text.selection.LocalTextSelectionColors
-import androidx.compose.material.LocalAbsoluteElevation
-import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material.LocalContentColor
-import androidx.compose.material.LocalElevationOverlay
-import androidx.compose.material.LocalTextStyle
-import androidx.compose.material.ripple.LocalRippleTheme
 import androidx.compose.runtime.InternalComposeApi
 import androidx.compose.runtime.saveable.LocalSaveableStateRegistry
 import androidx.compose.runtime.tooling.LocalInspectionTables
@@ -33,7 +27,6 @@ import androidx.compose.ui.platform.LocalViewConfiguration
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.test.junit4.createComposeRule
 import org.junit.Assert.assertSame
-import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 
@@ -183,41 +176,6 @@ class GetterExtensionsKtTest {
     }
 
     @Test
-    fun absoluteElevationInstanceVerification() {
-        rule.setContent {
-            assertTrue(absoluteElevation == LocalAbsoluteElevation.current)
-        }
-    }
-
-    @Test
-    fun elevationOverlayInstanceVerification() {
-        rule.setContent {
-            sameInstanceAs(elevationOverlay, LocalElevationOverlay.current)
-        }
-    }
-
-    @Test
-    fun contentAlphaInstanceVerification() {
-        rule.setContent {
-            assertTrue(contentAlpha == LocalContentAlpha.current)
-        }
-    }
-
-    @Test
-    fun contentColorInstanceVerification() {
-        rule.setContent {
-            assertTrue(contentColor == LocalContentColor.current)
-        }
-    }
-
-    @Test
-    fun textStyleInstanceVerification() {
-        rule.setContent {
-            sameInstanceAs(textStyle, LocalTextStyle.current)
-        }
-    }
-
-    @Test
     fun textSelectionColorsInstanceVerification() {
         rule.setContent {
             sameInstanceAs(textSelectionColors, LocalTextSelectionColors.current)
@@ -236,13 +194,6 @@ class GetterExtensionsKtTest {
     fun inspectionTablesInstanceVerification() {
         rule.setContent {
             sameInstanceAs(inspectionTables, LocalInspectionTables.current)
-        }
-    }
-
-    @Test
-    fun rippleThemeInstanceVerification() {
-        rule.setContent {
-            sameInstanceAs(rippleTheme, LocalRippleTheme.current)
         }
     }
 

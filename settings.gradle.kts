@@ -34,3 +34,4 @@ include(
 )
 include(":placeholder")
 include(":placeholder-m3")
+include(":core-m3")

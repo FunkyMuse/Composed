@@ -10,6 +10,15 @@ inline infix fun (() -> Unit).andThen(crossinline function: () -> Unit): () -> U
     function()
 }
 
+inline fun (() -> Unit).andThen(
+    crossinline function: () -> Unit,
+    crossinline function2: () -> Unit
+): () -> Unit = {
+    this()
+    function()
+    function2()
+}
+
 
 @Composable
 fun DisposableEffectRunOnlyOnce(

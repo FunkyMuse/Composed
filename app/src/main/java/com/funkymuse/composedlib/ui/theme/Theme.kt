@@ -27,7 +27,7 @@ private val LightColorScheme = lightColorScheme(
 fun ComposedLibTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     dynamicColor: Boolean = true,
-    content: @Composable() () -> Unit
+    content: @Composable () -> Unit
 ) {
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
@@ -40,11 +40,15 @@ fun ComposedLibTheme(
     }
     MaterialTheme(
         colorScheme = colorScheme,
-        content = content
+        content = content,
+        shapes = Shapes,
+        typography = Typography
     )
 }
 
 @Composable
-fun ComposedLibThemeSurface(content: @Composable () -> Unit){
-    Surface(color = MaterialTheme.colorScheme.background, content = content)
+fun ComposedLibThemeSurface(content: @Composable () -> Unit) {
+    ComposedLibTheme {
+        Surface(content = content)
+    }
 }

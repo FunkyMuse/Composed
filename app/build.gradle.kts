@@ -41,6 +41,7 @@ dependencies {
 
     //Compose
     implementation(libs.bundles.compose)
+    implementation(libs.compose.material3)
     implementation(libs.bundles.accompanist)
     debugImplementation(libs.bundles.compose.preview)
 

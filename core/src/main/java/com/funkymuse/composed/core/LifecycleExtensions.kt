@@ -2,9 +2,15 @@ package com.funkymuse.composed.core
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.compose.LifecycleEventEffect
 
 @Composable
 fun AddLifecycleObserver(observer: LifecycleObserver) {
@@ -25,4 +31,14 @@ fun <OWNER : LifecycleObserver> OWNER.ObserveLifecycle(lifecycle: Lifecycle = Lo
             lifecycle.removeObserver(this@ObserveLifecycle)
         }
     }
+}
+
+@Composable
+fun <T : Any> onEventValue(event: Lifecycle.Event = Lifecycle.Event.ON_START, value: () -> T): T {
+    val rememberLatestUpdateState by rememberUpdatedState(newValue = value)
+    var rememberedValue by remember { mutableStateOf(value()) }
+    LifecycleEventEffect(event = event) {
+        rememberedValue = rememberLatestUpdateState()
+    }
+    return rememberedValue
 }
