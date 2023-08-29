@@ -1,12 +1,12 @@
 [versions]
 kotlin = "1.9.0"
 appCompat = "1.7.0-alpha03"
-coreKTX = "1.12.0-beta01"
+coreKTX = "1.12.0-rc01"
 coroutines = "1.7.3"
-compose = "1.6.0-alpha02"
-composeCompiler = "1.5.1"
-composeMaterial2 = "1.6.0-alpha02"
-composeMaterial3 = "1.2.0-alpha04"
+compose = "1.6.0-alpha04"
+composeCompiler = "1.5.2"
+composeMaterial2 = "1.6.0-alpha04"
+composeMaterial3 = "1.2.0-alpha06"
 customView = "1.2.0-alpha02"
 customViewPooling = "1.0.0"
 lifecycle = "2.7.0-alpha01"
@@ -17,12 +17,12 @@ dokka = "1.8.20"
 hilt = "2.47"
 hilt-work = "1.0.0"
 hiltNavigationCompose = "1.1.0-alpha01"
-navigation_compose = "2.7.0-rc01"
+navigation_compose = "2.7.1"
 savedState = "1.2.1"
 junit-ktx = "1.1.5"
 jupiter_version = "5.10.0"
 androidx-test-core = "1.5.0"
-gradlePlugins-agp = "8.1.0"
+gradlePlugins-agp = "8.1.1"
 gradlePlugins-maven-publish = "maven-publish"
 app-build-compileSDKVersion = "34"
 app-build-targetSDK = "34"
@@ -32,7 +32,7 @@ app-build-kotlinJVMTarget = "17"
 app-version-groupId = "com.funkymuse.composed"
 app-version-appId = "com.funkymuse.composedlib"
 app-version-versionCode = "1"
-app-version-versionName = "0.1.6"
+app-version-versionName = "0.1.7"
 
 [libraries]
 androidx-customView = { module = "androidx.customview:customview", version.ref = "customView" }
@@ -53,6 +53,7 @@ compose-foundation = { module = "androidx.compose.foundation:foundation", versio
 compose-material2 = { module = "androidx.compose.material:material", version.ref = "composeMaterial2" }
 compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "composeMaterial3" }
 compose-animation = { module = "androidx.compose.animation:animation", version.ref = "compose" }
+compose-util = { module = "androidx.compose.ui:ui-util", version.ref = "compose" }
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 compose-runtime = { module = "androidx.compose.runtime:runtime", version.ref = "compose" }
 compose-live-data = { module = "androidx.compose.runtime:runtime-livedata", version.ref = "compose" }
@@ -92,6 +93,7 @@ compose = [
     "compose-material3",
     "compose-runtime",
     "compose-ui",
+    "compose-util",
     "compose-uiTooling-preview",
 ]
 hilt = [

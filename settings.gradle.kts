@@ -32,3 +32,5 @@ include(
     ":core",
     ":navigation",
 )
+include(":placeholder")
+include(":placeholder-m3")
