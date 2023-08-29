@@ -4,6 +4,7 @@ appCompat = "1.7.0-alpha03"
 coreKTX = "1.12.0-rc01"
 coroutines = "1.7.3"
 compose = "1.6.0-alpha04"
+composeActivity = "1.8.0-alpha07"
 composeCompiler = "1.5.2"
 composeMaterial3 = "1.2.0-alpha06"
 customView = "1.2.0-alpha02"
@@ -31,7 +32,7 @@ app-build-kotlinJVMTarget = "17"
 app-version-groupId = "com.funkymuse.composed"
 app-version-appId = "com.funkymuse.composedlib"
 app-version-versionCode = "1"
-app-version-versionName = "0.2.1"
+app-version-versionName = "0.2.2"
 
 [libraries]
 androidx-customView = { module = "androidx.customview:customview", version.ref = "customView" }
@@ -47,6 +48,7 @@ androidx-lifecycle-service = { module = "androidx.lifecycle:lifecycle-service", 
 androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigation_compose" }
 coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+compose-activity = { module = "androidx.activity:activity-compose", version.ref = "composeActivity" }
 compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "composeCompiler" }
 compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "composeMaterial3" }
@@ -83,6 +85,7 @@ testImplementation-runtime-jupiter-engine = { module = "org.junit.jupiter:junit-
 
 [bundles]
 compose = [
+    "compose-activity",
     "compose-animation",
     "compose-compiler",
     "compose-foundation",
