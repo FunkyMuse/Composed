@@ -8,6 +8,8 @@ com.funkymuse.composed.core.lazygrid
 com.funkymuse.composed.core.lazylist
 com.funkymuse.composed.core.material_transitions
 com.funkymuse.composed.core.stability_wrappers
+module:core-m3
+com.funkymuse.composed.core.m3
 module:navigation
 com.funkymuse.composed.navigation
 com.funkymuse.composed.navigation.arguments.nav_entry
@@ -27,3 +29,7 @@ com.funkymuse.composed.navigation.navargs.primitives
 com.funkymuse.composed.navigation.navargs.primitives.array
 com.funkymuse.composed.navigation.navargs.primitives.arraylist
 com.funkymuse.composed.navigation.navargs.serializable
+module:placeholder
+com.funkymuse.composed.placeholder
+module:placeholder-m3
+com.funkymuse.composed.placeholder.m3
