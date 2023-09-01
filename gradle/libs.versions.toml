@@ -1,11 +1,13 @@
 [versions]
-kotlin = "1.9.0"
+kotlin = "1.9.10"
+#KSP
+ksp = "1.9.10-1.0.13"
 appCompat = "1.7.0-alpha03"
 coreKTX = "1.12.0-rc01"
 coroutines = "1.7.3"
 compose = "1.6.0-alpha04"
 composeActivity = "1.8.0-alpha07"
-composeCompiler = "1.5.2"
+composeCompiler = "1.5.3"
 composeMaterial3 = "1.2.0-alpha06"
 customView = "1.2.0-alpha02"
 customViewPooling = "1.0.0"
@@ -142,6 +144,6 @@ unitTest = [
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 android = { id = "com.android.application", version.ref = "gradlePlugins-agp" }
 library = { id = "com.android.library", version.ref = "gradlePlugins-agp" }
-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }

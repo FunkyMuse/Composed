@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android)
     alias(libs.plugins.kotlinAndroid)
-    alias(libs.plugins.kapt)
+    alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
 }
 
@@ -33,7 +33,7 @@ dependencies {
     implementation(projects.navigation)
 
     implementation(libs.bundles.hilt)
-    kapt(libs.bundles.hilt.kapt)
+    ksp(libs.bundles.hilt.kapt)
 
     //core
     implementation(libs.androidx.core.ktx)
