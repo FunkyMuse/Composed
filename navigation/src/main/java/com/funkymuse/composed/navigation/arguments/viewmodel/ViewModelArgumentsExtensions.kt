@@ -31,8 +31,7 @@ context (ViewModelNavigationArguments)
 fun getStringArgument(key: String): String? = DestinationsStringNavType.get(savedStateHandle, key)
 
 context (ViewModelNavigationArguments)
-fun getBooleanArgument(key: String, defaultValue: Boolean): Boolean =
-    DestinationsBooleanNavType.get(savedStateHandle, key) ?: defaultValue
+fun getBooleanArgument(key: String): Boolean? = DestinationsBooleanNavType.get(savedStateHandle, key)
 
 context (ViewModelNavigationArguments)
 fun getIntArgument(key: String): Int? = DestinationsIntNavType.get(savedStateHandle, key)
