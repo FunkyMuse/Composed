@@ -31,7 +31,7 @@ context (NavigationEntryArguments)
 fun getStringArgument(key: String): String? = DestinationsStringNavType.safeGet(arguments, key)
 
 context (NavigationEntryArguments)
-fun getBooleanArgument(key: String, defaultValue: Boolean): Boolean? = DestinationsBooleanNavType.safeGet(arguments)
+fun getBooleanArgument(key: String): Boolean? = DestinationsBooleanNavType.safeGet(arguments, key)
 
 context (NavigationEntryArguments)
 fun getIntArgument(key: String): Int? = DestinationsIntNavType.safeGet(arguments, key)
