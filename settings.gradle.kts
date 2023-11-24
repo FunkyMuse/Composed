@@ -30,7 +30,6 @@ rootProject.name = "ComposedLib"
 include(
     ":app",
     ":core",
-    ":navigation",
 )
 include(":placeholder")
 include(":placeholder-m3")

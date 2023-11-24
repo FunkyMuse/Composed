@@ -30,7 +30,6 @@ hilt {
 
 dependencies {
     implementation(projects.core)
-    implementation(projects.navigation)
 
     implementation(libs.bundles.hilt)
     ksp(libs.bundles.hilt.kapt)
