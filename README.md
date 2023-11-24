@@ -12,7 +12,6 @@ composed = "" #check latest version
 #Composed
 composed-core = { module = "com.github.FunkyMuse.Composed:core", version.ref = "composed" }
 composed-core-m3 = { module = "com.github.FunkyMuse.Composed:core-m3", version.ref = "composed" }
-composed-navigation = { module = "com.github.FunkyMuse.Composed:navigation", version.ref = "composed" }
 composed-placeholder = { module = "com.github.FunkyMuse.Composed:placeholder", version.ref = "composed" }
 composed-placeholder-m3 = { module = "com.github.FunkyMuse.Composed:placeholder-m3", version.ref = "composed" }
 
@@ -21,7 +20,6 @@ composed-placeholder-m3 = { module = "com.github.FunkyMuse.Composed:placeholder-
 composed = [
     "composed-core",
     "composed-placeholder",
-    "composed-navigation",
 ]
 composed-m3 = [
     "composed-core-m3",
