@@ -1,7 +1,7 @@
 [versions]
 kotlin = "1.9.22"
 #KSP
-ksp = "1.9.22-1.0.16"
+ksp = "1.9.22-1.0.17"
 appCompat = "1.7.0-alpha03"
 coreKTX = "1.12.0"
 coroutines = "1.7.3"
