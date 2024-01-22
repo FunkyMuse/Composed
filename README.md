@@ -1,4 +1,4 @@
-Make sure to migrate to [KAHelpers Compose](https://github.com/FunkyMuse/KAHelpers/tree/main/compose) it's just different package name, everything remains the same.
+## Make sure to migrate to [KAHelpers Compose](https://github.com/FunkyMuse/KAHelpers/tree/main/compose) it's just different package name, everything remains the same.
 
 # Composed
 Helpers for smoother Compose development on Android
